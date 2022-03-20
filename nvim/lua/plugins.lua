@@ -8,8 +8,14 @@ return require('packer').startup(function()
     use 'Mofiqul/vscode.nvim'
 
     -- Grep and Filesearch
-    use {'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/plenary.nvim'} }}
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use {
+			'nvim-telescope/telescope.nvim',
+			requires = {{'nvim-lua/plenary.nvim'}}
+	}
+    use {
+			'nvim-telescope/telescope-fzf-native.nvim',
+			run = 'make'
+	}
     use 'nvim-lua/popup.nvim'
 
     -- Tree
@@ -25,16 +31,39 @@ return require('packer').startup(function()
 
     -- LSP
     use 'neovim/nvim-lspconfig'
-    use {'hrsh7th/nvim-cmp', branch = 'main' }
-    use {'hrsh7th/cmp-nvim-lsp', branch = 'main' }
-    use {'hrsh7th/cmp-path', branch = 'main' }
-    use {'hrsh7th/cmp-nvim-lua', branch = 'main' }
-    use {'hrsh7th/cmp-buffer', branch = 'main' }
+    use {
+			'hrsh7th/nvim-cmp',
+			branch = 'main'
+	}
+    use {
+			'hrsh7th/cmp-nvim-lsp',
+			branch = 'main'
+	}
+    use {
+			'hrsh7th/cmp-path',
+			branch = 'main'
+	}
+    use {
+			'hrsh7th/cmp-nvim-lua',
+			branch = 'main'
+	}
+    use {
+			'hrsh7th/cmp-buffer',
+			branch = 'main'
+	}
     use 'saadparwaiz1/cmp_luasnip'
-
     use 'ray-x/lsp_signature.nvim'
     -- use 'p00f/clangd_extensions.nvim'
-    use 'psf/black'
-
-    -- use 'bi0ha2ard/telescope-ros.nvim'
+    
+	use 'psf/black'
+    
+	use {
+			"folke/todo-comments.nvim",
+			requires = "nvim-lua/plenary.nvim",
+			config = function()
+					require("todo-comments").setup {}
+			end
+	}
+    
+	use 'bi0ha2ard/telescope-ros.nvim'
 end)
