@@ -33,12 +33,17 @@ nvim_lsp.clangd.setup{
   capabilities = capabilities
 }
 
-nvim_lsp.pylsp.setup{
-  on_attach = custom_attach,
-  capabilities = capabilities
-}
+-- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+local servers = { 'pyright', 'cmake' }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = custom_attach,
+    capabilities = capabilities,
+  }
+end
 
-nvim_lsp.cmake.setup{
-  on_attach = custom_attach,
-  capabilities = capabilities
-}
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
