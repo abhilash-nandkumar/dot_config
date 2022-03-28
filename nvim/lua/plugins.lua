@@ -1,6 +1,7 @@
--- vim.cmd [[packadd packer.nvim]]
-
 return require('packer').startup(function()
+
+	use { "wbthomason/packer.nvim" }
+
     -- Packer can manage itself
     use 'tomasiser/vim-code-dark'
 
@@ -48,9 +49,9 @@ return require('packer').startup(function()
 			'hrsh7th/cmp-buffer',
 			branch = 'main'
 	}
-    use 'L3MON4D3/LuaSnip'
+	use 'L3MON4D3/LuaSnip'
 	use 'saadparwaiz1/cmp_luasnip'
-    use 'ray-x/lsp_signature.nvim'
+	use 'ray-x/lsp_signature.nvim'
     -- use 'p00f/clangd_extensions.nvim'
     
 	use 'psf/black'
