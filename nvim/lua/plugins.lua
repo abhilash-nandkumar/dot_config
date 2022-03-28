@@ -31,11 +31,8 @@ return require('packer').startup(function()
 
     -- LSP
     use 'neovim/nvim-lspconfig'
-    use {
-			'hrsh7th/nvim-cmp',
-			branch = 'main'
-	}
-    use {
+    use 'hrsh7th/nvim-cmp'
+	use {
 			'hrsh7th/cmp-nvim-lsp',
 			branch = 'main'
 	}
@@ -51,7 +48,8 @@ return require('packer').startup(function()
 			'hrsh7th/cmp-buffer',
 			branch = 'main'
 	}
-    use 'saadparwaiz1/cmp_luasnip'
+    use 'L3MON4D3/LuaSnip'
+	use 'saadparwaiz1/cmp_luasnip'
     use 'ray-x/lsp_signature.nvim'
     -- use 'p00f/clangd_extensions.nvim'
     
@@ -64,6 +62,6 @@ return require('packer').startup(function()
 					require("todo-comments").setup {}
 			end
 	}
-    
+    use 'voldikss/vim-floaterm'
 	use 'bi0ha2ard/telescope-ros.nvim'
 end)

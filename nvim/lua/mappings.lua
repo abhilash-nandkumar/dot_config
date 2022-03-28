@@ -63,3 +63,8 @@ nnoremap('<leader>7', '7gt')
 nnoremap('<leader>8', '8gt')
 nnoremap('<leader>9', '9gt')
 nnoremap('<leader>0', ':tablast<cr>')
+
+
+-- floaterm
+vim.g.floaterm_keymap_toggle = '<leader>t'
+vim.g.floaterm_keymap_new = '<leader>ft'
