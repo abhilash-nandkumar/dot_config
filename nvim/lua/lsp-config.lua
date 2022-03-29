@@ -35,7 +35,7 @@ nvim_lsp.clangd.setup{
 }
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'pyright', 'cmake', 'jsonls' }
+local servers = { 'bashls', 'cmake', 'jsonls', 'pyright', 'vimls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = custom_attach,
@@ -70,7 +70,7 @@ nvim_lsp.sumneko_lua.setup({
             }
         }
     },
-    on_attach = on_attach_common
+    on_attach = custom_attach,
 })
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
