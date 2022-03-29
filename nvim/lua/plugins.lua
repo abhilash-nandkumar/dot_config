@@ -65,4 +65,6 @@ return require('packer').startup(function()
 	}
     use 'voldikss/vim-floaterm'
 	use 'bi0ha2ard/telescope-ros.nvim'
+	use 'vim-airline/vim-airline'
+	use 'vim-airline/vim-airline-themes'
 end)
