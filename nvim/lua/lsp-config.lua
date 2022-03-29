@@ -1,6 +1,7 @@
 local nvim_lsp = require('lspconfig')
 local lsp_sigs = require('lsp_signature')
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local custom_attach = function(client, bufnr)
   lsp_sigs.on_attach({
@@ -34,7 +35,7 @@ nvim_lsp.clangd.setup{
 }
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'pyright', 'cmake' }
+local servers = { 'pyright', 'cmake', 'jsonls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = custom_attach,

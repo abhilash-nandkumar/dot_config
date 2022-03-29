@@ -26,6 +26,7 @@ return require('packer').startup(function()
 
     -- Git
     use 'tpope/vim-fugitive'
+	use 'tpope/vim-rhubarb'
 
     use 'mhinz/vim-startify'
     use 'airblade/vim-rooter'
@@ -67,4 +68,5 @@ return require('packer').startup(function()
 	use 'bi0ha2ard/telescope-ros.nvim'
 	use 'vim-airline/vim-airline'
 	use 'vim-airline/vim-airline-themes'
+	use 'tpope/vim-commentary'
 end)
