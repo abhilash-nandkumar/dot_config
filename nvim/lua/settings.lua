@@ -5,7 +5,7 @@ local opt = vim.opt
 local cmd = vim.cmd
 
 g.mapleader = " "
-
+opt.mouse = 'a'
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.scrolloff = 50
@@ -42,6 +42,5 @@ g['airline#extensions#tabline#right_alt_sep'] = ''
 g.airline_powerline_fonts = true
 g.airline_left_sep = ''
 g.airline_right_sep = ''
--- g.airline_theme = 'one_dark'
 opt.showtabline = 2
 opt.showmode = false
