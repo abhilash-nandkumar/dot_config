@@ -68,3 +68,7 @@ nnoremap('<leader>0', ':tablast<cr>')
 -- floaterm
 vim.g.floaterm_keymap_toggle = '<leader>t'
 vim.g.floaterm_keymap_new = '<leader>ft'
+
+-- vim-sneak
+map('', 'gS', '<Plug>Sneak_', {silent = true})
+map('', 'gs', '<Plug>Sneak_', {silent = true})

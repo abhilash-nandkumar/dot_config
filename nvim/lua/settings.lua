@@ -44,3 +44,13 @@ g.airline_left_sep = ''
 g.airline_right_sep = ''
 opt.showtabline = 2
 opt.showmode = false
+
+-- vim-sneak
+g['sneak#label'] = 1
+g['sneak#use_ic_scs'] = 1
+g['sneak#s_next'] = 1
+g['sneak#prompt'] = '🔍: '
+cmd('highlight Sneak guifg=black guibg=#00C7DF ctermfg=black ctermbg=cyan')
+cmd('highlight SneakScope guifg=red guibg=yellow ctermfg=red ctermbg=yellow')
+
+

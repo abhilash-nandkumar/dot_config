@@ -21,7 +21,10 @@ return require('packer').startup(function()
 
     -- Tree
     use 'scrooloose/nerdtree'
-    use 'majutsushi/tagbar'
+    use 'Xuyuanp/nerdtree-git-plugin' 
+	use 'tiagofumo/vim-nerdtree-syntax-highlight'
+	use 'ryanoasis/vim-devicons'
+	use 'majutsushi/tagbar'
     use 'kyazdani42/nvim-web-devicons'
 
     -- Git
@@ -54,9 +57,17 @@ return require('packer').startup(function()
 	use 'saadparwaiz1/cmp_luasnip'
 	use 'ray-x/lsp_signature.nvim'
     -- use 'p00f/clangd_extensions.nvim'
-    
+	--
+
+
+	use {
+			'nvim-treesitter/nvim-treesitter',
+			run = ':TSUpdate'
+	}
 	use 'psf/black'
-    
+
+
+
 	use {
 			"folke/todo-comments.nvim",
 			requires = "nvim-lua/plenary.nvim",
@@ -69,4 +80,5 @@ return require('packer').startup(function()
 	use 'vim-airline/vim-airline'
 	use 'vim-airline/vim-airline-themes'
 	use 'tpope/vim-commentary'
+	use 'justinmk/vim-sneak'
 end)
