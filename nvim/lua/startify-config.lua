@@ -54,15 +54,15 @@ g.startify_fortune_use_unicode = 1
 g.startify_session_persistence = 1
 
 g.startify_lists = {
-  { type = "sessions", header = {"   Sessions"} }, 
-  { type = "files", header = {"   Files"} },
-  { type = 'dir', header = { "   Current Directory "..vim.fn.getcwd()..":" } },
-  { type = 'bookmarks', header = { '   Bookmarks' } }
+	{ type = "sessions", header = { "   Sessions" } },
+	{ type = "files", header = { "   Files" } },
+	{ type = "dir", header = { "   Current Directory " .. vim.fn.getcwd() .. ":" } },
+	{ type = "bookmarks", header = { "   Bookmarks" } },
 }
 
 g.startify_bookmarks = {
-  { ipa = '~/packages/ipa_navigation_ws/src/ipa_navigation'},
-  { bmw = '~/packages/bmw_ws/src/bmwstr'},
-  { res = '~/packages/single-robot-backend'},
-  { vrc = '~/.config/nvim'},
+	{ ipa = "~/packages/ipa_navigation_ws/src/ipa_navigation" },
+	{ bmw = "~/packages/bmw_ws/src/bmwstr" },
+	{ res = "~/packages/single-robot-backend" },
+	{ vrc = "~/.config/nvim" },
 }
