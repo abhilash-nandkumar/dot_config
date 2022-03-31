@@ -37,6 +37,9 @@ nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>") -- nnoremap <leader>fh <c
 -- Tagbar
 nmap("<F8>", ":TagbarToggle<CR>") -- nmap <F8> :TagbarToggle<CR>
 
+-- Startify Home Page
+nmap("<F9>", ":Startify<CR>")
+
 -- NERDTree
 map("", "<F5>", ": NERDTreeToggle<CR>", { silent = true }) -- map <silent> <F5> : NERDTreeToggle<CR>
 
