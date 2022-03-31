@@ -29,8 +29,8 @@ function tmap(shortcut, command)
 end
 
 -- Telescope settings
-nnoremap("<leader>ff", "<cmd>Telescope find_files<cr>") -- nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap("<leader>fs", "<cmd>Telescope live_grep<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
+nnoremap("<leader>ff", "<cmd>Telescope find_files hidden=true<cr>") -- nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap("<leader>fs", "<cmd>Telescope live_grep hidden=true<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
 nnoremap("<leader>fb", "<cmd>Telescope buffers<cr>") -- nnoremap  <leader>fb <cmd>Telescope buffers<cr>
 nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>") -- nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
