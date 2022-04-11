@@ -42,7 +42,7 @@ nvim_lsp.clangd.setup({
 })
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { "bashls", "cmake", "dockerls", "jsonls", "pyright", "vimls" }
+local servers = { "bashls", "cmake", "dockerls", "jsonls", "texlab", "pyright", "vimls" }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
 		on_attach = custom_attach,

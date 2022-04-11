@@ -28,17 +28,35 @@ function tmap(shortcut, command)
 	map("t", shortcut, command, {})
 end
 
+-- general Navigation
+nnoremap("ü", "{") -- goto previous blank space in vertical direction
+nnoremap("+", "}") -- goto next blank space in vertical direction
+
 -- Telescope settings
 nnoremap("<leader>ff", "<cmd>Telescope find_files hidden=true<cr>") -- nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap("<leader>fs", "<cmd>Telescope live_grep hidden=true<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
 nnoremap("<leader>fb", "<cmd>Telescope buffers<cr>") -- nnoremap  <leader>fb <cmd>Telescope buffers<cr>
 nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>") -- nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+-- Git
+nnoremap("<leader>gs", ":<cmd>Telescope git_status<cr> <CR>") -- Show git status
+nnoremap("<leader>gb", "<cmd>Telescope git_branches<cr>") -- open list of branches
+nnoremap("<leader>gc", "<cmd>Telescope git_commits<cr>") -- open list of commit
+nnoremap("<leader>gd", "<cmd>Telescope git_bcommits<cr>") -- nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+-- nnoremap("<leader>gs", ":G<cr>") -- Show git status
+nnoremap("<leader>gf", ":diffget //2 <CR>") -- select left during merge conflicts
+nnoremap("<leader>gh", ":diffget //3 <CR>") -- select right during merge conflicts
+
+-- search
+nnoremap("´", "*") -- goto next search result with + and previous with #
+nnoremap("<c-h>", ":set hlsearch!<CR>") -- toggle highlight search
+
 -- Tagbar
 nmap("<F8>", ":TagbarToggle<CR>") -- nmap <F8> :TagbarToggle<CR>
 
 -- Startify Home Page
-nmap("<F9>", ":Startify<CR>")
+nmap("<F1>", ":Startify<CR>")
 
 -- NERDTree
 map("", "<F5>", ": NERDTreeToggle<CR>", { silent = true }) -- map <silent> <F5> : NERDTreeToggle<CR>
@@ -55,16 +73,7 @@ nnoremap("<C-L>", "<C-W><C-L>") -- nnoremap <C-L> <C-W><C-L>
 nnoremap("<C-H>", "<C-W><C-H>") -- nnoremap <C-H> <C-W><C-H>
 
 -- Go to tab by number
-nnoremap("<leader>1", "1gt")
-nnoremap("<leader>2", "2gt")
-nnoremap("<leader>3", "3gt")
-nnoremap("<leader>4", "4gt")
-nnoremap("<leader>5", "5gt")
-nnoremap("<leader>6", "6gt")
-nnoremap("<leader>7", "7gt")
-nnoremap("<leader>8", "8gt")
-nnoremap("<leader>9", "9gt")
-nnoremap("<leader>0", ":tablast<cr>")
+nnoremap("	", ":bnext<CR>")
 
 -- floaterm
 vim.g.floaterm_keymap_toggle = "<leader>t"

@@ -61,7 +61,7 @@ g.startify_lists = {
 }
 
 g.startify_bookmarks = {
-	{ ipa = "~/packages/ipa_navigation_ws/src/ipa_navigation" },
+	{ ipa = "~/packages/ipa_navigation_ws/src/navigation" },
 	{ bmw = "~/packages/bmw_ws/src/bmwstr" },
 	{ res = "~/packages/single-robot-backend" },
 	{ vrc = "~/.config/nvim" },
