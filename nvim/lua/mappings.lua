@@ -42,7 +42,7 @@ nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>") -- nnoremap <leader>fh <c
 nnoremap("<leader>gs", ":<cmd>Telescope git_status<cr> <CR>") -- Show git status
 nnoremap("<leader>gb", "<cmd>Telescope git_branches<cr>") -- open list of branches
 nnoremap("<leader>gc", "<cmd>Telescope git_commits<cr>") -- open list of commit
-nnoremap("<leader>gd", "<cmd>Telescope git_bcommits<cr>") -- nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap("<leader>gdd", "<cmd>Telescope git_bcommits<cr>") -- nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 -- nnoremap("<leader>gs", ":G<cr>") -- Show git status
 nnoremap("<leader>gf", ":diffget //2 <CR>") -- select left during merge conflicts
