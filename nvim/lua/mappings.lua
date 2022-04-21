@@ -73,7 +73,9 @@ nnoremap("<C-L>", "<C-W><C-L>") -- nnoremap <C-L> <C-W><C-L>
 nnoremap("<C-H>", "<C-W><C-H>") -- nnoremap <C-H> <C-W><C-H>
 
 -- Go to tab by number
-nnoremap("	", ":bnext<CR>")
+nnoremap("<Tab>", ":bnext<CR>")
+nnoremap("<S-Tab>", ":bprev<CR>")
+nnoremap("<leader><F4>", ":bd<CR>")
 
 -- floaterm
 vim.g.floaterm_keymap_toggle = "<leader>t"
