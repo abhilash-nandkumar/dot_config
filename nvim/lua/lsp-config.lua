@@ -19,7 +19,7 @@ local custom_attach = function(client, bufnr)
 	local opts = { silent = false, noremap = true }
 	buf_set_keymap("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	buf_set_keymap("n", "<leader>h", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+	buf_set_keymap("n", "<leader>fx", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 	buf_set_keymap("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	buf_set_keymap("n", "<leader>r", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	buf_set_keymap("n", "<leader>d", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
@@ -36,7 +36,7 @@ local custom_attach = function(client, bufnr)
 end
 
 nvim_lsp.clangd.setup({
-	cmd = { "clangd", "--log=error", "--background-index", "--clang-tidy", "-j=6", "--suggest-missing-includes" },
+	cmd = { "clangd", "--log=error", "--background-index", "--clang-tidy", "-j=4", "--suggest-missing-includes" },
 	on_attach = custom_attach,
 	capabilities = capabilities,
 })
