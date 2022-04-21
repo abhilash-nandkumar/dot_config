@@ -27,6 +27,7 @@ opt.hlsearch = false
 opt.wrapscan = true
 opt.splitbelow = true
 opt.splitright = true
+g.NERDTreeShowHidden = true
 
 g.vscode_style = "dark"
 cmd("colorscheme vscode")
