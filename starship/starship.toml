@@ -66,11 +66,11 @@ disabled = true
 [rust]
 disabled = true
 
-[time]
-time_format = "%T"
-format = "🕙 $time($style) "
-style = "bright-white"
-disabled = false
+# [time]
+# time_format = "%T"
+# format = "🕙 $time($style) "
+# style = "bright-white"
+# disabled = false
 
 [username]
 style_user = "bold dimmed blue"
