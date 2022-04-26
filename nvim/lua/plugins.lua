@@ -1,6 +1,5 @@
 return require("packer").startup(function()
 	use({ "wbthomason/packer.nvim" })
-
 	-- Packer can manage itself
 	use("tomasiser/vim-code-dark")
 
@@ -29,9 +28,7 @@ return require("packer").startup(function()
 	-- Git
 	use("tpope/vim-fugitive")
 	use("tpope/vim-rhubarb")
-
-	use("mhinz/vim-startify")
-	use("airblade/vim-rooter")
+	use("lewis6991/gitsigns.nvim")
 
 	-- LSP
 	use("neovim/nvim-lspconfig")
