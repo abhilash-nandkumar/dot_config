@@ -44,6 +44,7 @@ g["airline#extensions#tabline#left_sep"] = ""
 g["airline#extensions#tabline#left_alt_sep"] = ""
 g["airline#extensions#tabline#right_sep"] = ""
 g["airline#extensions#tabline#right_alt_sep"] = ""
+g["airline#extensions#tabline#fnamemod"] = ":t"
 -- g.airline_powerline_fonts = true
 g.airline_left_sep = ""
 g.airline_right_sep = ""
