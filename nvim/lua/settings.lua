@@ -5,6 +5,7 @@ local opt = vim.opt
 local cmd = vim.cmd
 
 g.mapleader = " "
+opt.clipboard = "unnamedplus"
 opt.mouse = "a"
 opt.tabstop = 4
 opt.softtabstop = 4
