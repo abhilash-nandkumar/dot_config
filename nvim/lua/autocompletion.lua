@@ -3,6 +3,9 @@ vim.g.complete = "menu,menuone,noselect,noinsert"
 -- luasnip setup
 local luasnip = require("luasnip")
 
+-- autopairs setup
+require('nvim-autopairs').setup{}
+
 -- nvim-cmp setup
 local cmp = require("cmp")
 cmp.setup({

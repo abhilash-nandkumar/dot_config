@@ -1,12 +1,13 @@
 return require("packer").startup(function()
 	use({ "wbthomason/packer.nvim" })
+
 	-- Packer can manage itself
 	use("tomasiser/vim-code-dark")
 
 	-- Themes
 	use("Mofiqul/vscode.nvim")
 
-	-- Grep and Filesearch
+	-- telescope
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = { { "nvim-lua/plenary.nvim" } },
@@ -32,6 +33,10 @@ return require("packer").startup(function()
 
 	-- LSP
 	use("neovim/nvim-lspconfig")
+	use("jose-elias-alvarez/null-ls.nvim")
+	use("ray-x/lsp_signature.nvim")
+
+	-- completion
 	use("hrsh7th/nvim-cmp")
 	use({
 		"hrsh7th/cmp-nvim-lsp",
@@ -49,16 +54,17 @@ return require("packer").startup(function()
 		"hrsh7th/cmp-buffer",
 		branch = "main",
 	})
+
 	use("L3MON4D3/LuaSnip")
 	use("saadparwaiz1/cmp_luasnip")
-	use("ray-x/lsp_signature.nvim")
 
-	use("jose-elias-alvarez/null-ls.nvim")
+	-- misc
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
-
+	use("p00f/nvim-ts-rainbow")
+	use("windwp/nvim-autopairs")
 	use({
 		"folke/todo-comments.nvim",
 		requires = "nvim-lua/plenary.nvim",
@@ -67,11 +73,10 @@ return require("packer").startup(function()
 		end,
 	})
 	use("voldikss/vim-floaterm")
-	use("bi0ha2ard/telescope-ros.nvim")
-
 	use("vim-airline/vim-airline")
 	use("vim-airline/vim-airline-themes")
+	use("mhinz/vim-startify")
+	use("airblade/vim-rooter")
 	use("tpope/vim-commentary")
-	-- use("akinsho/bufferline.nvim")
 	use("moll/vim-bbye")
 end)
