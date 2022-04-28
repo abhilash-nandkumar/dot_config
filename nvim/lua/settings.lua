@@ -51,3 +51,8 @@ g.airline_left_sep = ""
 g.airline_right_sep = ""
 opt.showtabline = 2
 opt.showmode = false
+
+-- Treesitter
+opt.foldlevel = 20
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
