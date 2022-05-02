@@ -39,12 +39,11 @@ nnoremap("<leader>fb", "<cmd>Telescope buffers<cr>") -- nnoremap  <leader>fb <cm
 nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>") -- nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 -- Git
-nnoremap("<leader>gs", ":<cmd>Telescope git_status<cr> <CR>") -- Show git status
 nnoremap("<leader>gb", "<cmd>Telescope git_branches<cr>") -- open list of branches
 nnoremap("<leader>gc", "<cmd>Telescope git_commits<cr>") -- open list of commit
 nnoremap("<leader>gdd", "<cmd>Telescope git_bcommits<cr>") -- nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
--- nnoremap("<leader>gs", ":G<cr>") -- Show git status
+nnoremap("<leader>gs", ":G<cr>") -- Show git status
 nnoremap("<leader>gf", ":diffget //2 <CR>") -- select left during merge conflicts
 nnoremap("<leader>gh", ":diffget //3 <CR>") -- select right during merge conflicts
 
@@ -67,10 +66,13 @@ nnoremap("<leader>j", ":m .+1<CR>==") -- nnoremap <leader>j :m .+1<CR>==
 nnoremap("<leader>k", ":m .-2<CR>==") -- nnoremap <leader>k :m .-2<CR>==
 
 -- Split Navigation
-nnoremap("<C-J>", "<C-W><C-J>") -- nnoremap <C-J> <C-W><C-J>
-nnoremap("<C-K>", "<C-W><C-K>") -- nnoremap <C-K> <C-W><C-K>
-nnoremap("<C-L>", "<C-W><C-L>") -- nnoremap <C-L> <C-W><C-L>
-nnoremap("<C-H>", "<C-W><C-H>") -- nnoremap <C-H> <C-W><C-H>
+nnoremap("sj", "<C-W><C-J>") -- nnoremap <C-J> <C-W><C-J>
+nnoremap("sk", "<C-W><C-K>") -- nnoremap <C-K> <C-W><C-K>
+nnoremap("sl", "<C-W><C-L>") -- nnoremap <C-L> <C-W><C-L>
+nnoremap("sh", "<C-W><C-H>") -- nnoremap <C-H> <C-W><C-H>
+
+nnoremap("<A-v>", ":vsplit<CR>")
+nnoremap("<A-h>", ":split<CR>")
 
 -- Go to tab by number
 nnoremap("<Tab>", ":bnext<CR>")
@@ -84,3 +86,11 @@ vim.g.floaterm_keymap_new = "<leader>ft"
 -- vim-sneak
 map("", "gS", "<Plug>Sneak_", { silent = true })
 map("", "gs", "<Plug>Sneak_", { silent = true })
+
+-- Replace string
+map("n", "S", ":%s///gI<Left><Left><Left><Left>", { noremap = true })
+map("v", "S", ":s//<Left>", { noremap = true })
+
+-- Alias write and quit to Q
+nnoremap("<leader>q", ":wq<CR>")
+nnoremap("<leader>w", ":w<CR>")
