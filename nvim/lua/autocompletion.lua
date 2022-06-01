@@ -1,10 +1,19 @@
 vim.g.complete = "menu,menuone,noselect,noinsert"
+-- vim.opt.shortmess:append "c"
 
 -- luasnip setup
 local luasnip = require("luasnip")
 
 -- autopairs setup
-require('nvim-autopairs').setup{}
+require("nvim-autopairs").setup({})
+
+-- lspkind
+-- local ok, lspkind = pcall(require, "lspkind")
+-- if not ok then
+--   return
+-- end
+
+-- lspkind.init()
 
 -- nvim-cmp setup
 local cmp = require("cmp")
@@ -45,7 +54,18 @@ cmp.setup({
 		end,
 	},
 	sources = {
+		-- { name = "nvim_lua" },
 		{ name = "nvim_lsp" },
+		-- { name = "path" },
 		{ name = "luasnip" },
+		-- { name = "buffer", keyword_length = 5 },
 	},
+	-- formatting = {
+	-- 	format = lspkind.cmp_format({
+	-- 		with_text = true,
+	-- 		menu = {
+	-- 			buffer = "[buf]",
+	-- 			path = "[path]",
+	-- 			luasnip = "[snip]",
+	-- 		},
 })
