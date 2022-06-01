@@ -49,7 +49,7 @@ nnoremap("<leader>gh", ":diffget //3 <CR>") -- select right during merge conflic
 
 -- search
 nnoremap("´", "*") -- goto next search result with + and previous with #
-nnoremap("<c-h>", ":set hlsearch!<CR>") -- toggle highlight search
+nnoremap("<leader>hl", ":set hlsearch!<CR>") -- toggle highlight search
 
 -- Tagbar
 nmap("<F8>", ":TagbarToggle<CR>") -- nmap <F8> :TagbarToggle<CR>
@@ -66,10 +66,10 @@ nnoremap("<leader>j", ":m .+1<CR>==") -- nnoremap <leader>j :m .+1<CR>==
 nnoremap("<leader>k", ":m .-2<CR>==") -- nnoremap <leader>k :m .-2<CR>==
 
 -- Split Navigation
-nnoremap("sj", "<C-W><C-J>") -- nnoremap <C-J> <C-W><C-J>
-nnoremap("sk", "<C-W><C-K>") -- nnoremap <C-K> <C-W><C-K>
-nnoremap("sl", "<C-W><C-L>") -- nnoremap <C-L> <C-W><C-L>
-nnoremap("sh", "<C-W><C-H>") -- nnoremap <C-H> <C-W><C-H>
+nnoremap("<C-j>", "<C-W><C-J>") -- nnoremap <C-J> <C-W><C-J>
+nnoremap("<C-k>", "<C-W><C-K>") -- nnoremap <C-K> <C-W><C-K>
+nnoremap("<C-l>", "<C-W><C-L>") -- nnoremap <C-L> <C-W><C-L>
+nnoremap("<C-h>", "<C-W><C-H>") -- nnoremap <C-H> <C-W><C-H>
 
 nnoremap("<A-v>", ":vsplit<CR>")
 nnoremap("<A-h>", ":split<CR>")
