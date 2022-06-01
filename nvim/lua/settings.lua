@@ -1,9 +1,9 @@
 HOME = os.getenv("HOME")
 
-local g = vim.g
-local opt = vim.opt
+local g = vim.g -- let
+local opt = vim.opt -- set
 local cmd = vim.cmd
-
+-- g.color = "dracula"
 g.mapleader = " "
 opt.clipboard = "unnamedplus"
 opt.mouse = "a"
@@ -24,7 +24,7 @@ opt.backup = false
 opt.undodir = HOME .. "/.vim/undo-dir"
 opt.undofile = true
 opt.incsearch = true
-opt.hlsearch = false
+opt.hlsearch = true
 opt.wrapscan = true
 opt.splitbelow = true
 opt.splitright = true
@@ -40,15 +40,18 @@ cmd(
 )
 
 -- Airline
-g["airline#extensions#tabline#enabled"] = 1
+g["airline#extensions#tabline#enabled"] = 0
 g["airline#extensions#tabline#left_sep"] = ""
 g["airline#extensions#tabline#left_alt_sep"] = ""
 g["airline#extensions#tabline#right_sep"] = ""
 g["airline#extensions#tabline#right_alt_sep"] = ""
 g["airline#extensions#tabline#fnamemod"] = ":t"
--- g.airline_powerline_fonts = true
-g.airline_left_sep = ""
-g.airline_right_sep = ""
+g.airline_powerline_fonts = true
+g.airline_left_sep = " ❤  "
+-- g.airline_right_sep = " 🟆 "
+g.airline_section_y = ""
+g.airline_section_x = ""
+g.laststatus = 2
 opt.showtabline = 2
 opt.showmode = false
 
@@ -56,3 +59,9 @@ opt.showmode = false
 opt.foldlevel = 20
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
+
+-- Remove trailing whitespace on save
+-- autocmd BufWritePre * %s/\s\+$//e
+
+opt.listchars = "tab:>~,trail:."
+opt.list = true

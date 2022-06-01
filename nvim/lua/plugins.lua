@@ -54,7 +54,7 @@ return require("packer").startup(function()
 		"hrsh7th/cmp-buffer",
 		branch = "main",
 	})
-
+	-- use("onsails/lspkind.nvim")
 	use("L3MON4D3/LuaSnip")
 	use("saadparwaiz1/cmp_luasnip")
 
