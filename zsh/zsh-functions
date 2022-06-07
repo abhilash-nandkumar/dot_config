@@ -1,0 +1,100 @@
+# Function to source files if they exist
+function zsh_add_file() {
+    [ -f "$ZDOTDIR/$1" ] && source "$ZDOTDIR/$1"
+}
+
+function zsh_add_plugin() {
+    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
+    if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
+        # For plugins
+        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
+        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
+    else
+        git clone "https://github.com/$1.git" "$ZDOTDIR/plugins/$PLUGIN_NAME"
+    fi
+}
+
+function zsh_add_completion() {
+    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
+    if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
+        # For completions
+		completion_file_path=$(ls $ZDOTDIR/plugins/$PLUGIN_NAME/_*)
+		fpath+="$(dirname "${completion_file_path}")"
+        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh"
+    else
+        git clone "https://github.com/$1.git" "$ZDOTDIR/plugins/$PLUGIN_NAME"
+		fpath+=$(ls $ZDOTDIR/plugins/$PLUGIN_NAME/_*)
+        [ -f $ZDOTDIR/.zccompdump ] && $ZDOTDIR/.zccompdump
+    fi
+	completion_file="$(basename "${completion_file_path}")"
+	if [ "$2" = true ] && compinit "${completion_file:1}"
+}
+
+
+function single_ros_test {
+	if [ $# -lt 2 ]; then
+		echo "Usage: single_ros_test package testname [test args]"
+		echo "Use --gtest_filter=SomeRegex* to run specific tests only"
+		return;
+	fi;
+	catkin build "$1" --no-deps --make-args "$2" && rosrun "$1" "$2" "${@:3}"
+}
+
+function rostest_gdb {
+	if [ $# -lt 2 ]; then
+		echo "Usage: rostest_gdb package testname [test args]"
+		echo "Use --gtest_filter=SomeRegex* to run specific tests only"
+		return;
+	fi;
+  gdb --args "$(catkin_find "$1" "$2")" "${@:3}"
+}
+
+function start_sim {
+        source $HOME/packages/ipa_navigation_ws/devel/setup.bash
+        if [ $# -eq 0 ]; then
+                roslaunch ipa_navigation_simulation sim_only.launch robot:=raw3-3 robot_env:=ipa-apartment
+                return;
+        elif [ $# -eq 2 ]; then
+                roslaunch ipa_navigation_simulation sim_only.launch robot:="$1" robot_env:="$2"
+                return;
+        else
+                #echo "Usage: start_sim robot robot_env"
+                #echo "Example start_sim raw3-3 ipa-apartment"
+                return;
+        fi 
+}
+
+function start_nav {
+	source $HOME/packages/ipa_navigation_ws/devel/setup.bash
+        if [ $# -eq 0 ]; then
+                roslaunch ipa_navigation ipa_navigation.launch robot:=raw3-3 robot_env:=ipa-apartment localization_backend:=lts_ng cmd_vel:=/cmd_vel_nav
+                return;
+	elif [ $# -eq 2 ]; then
+		roslaunch ipa_navigation ipa_navigation.launch robot:="$1" robot_env:="$2" localization_backend:=lts_ng cmd_vel:=/cmd_vel_nav
+                return;
+        else
+                #echo "Usage: start_nav robot robot_env"
+                #echo "Example start_nav raw3-3 ipa-apartment"
+                return;
+        fi
+}
+
+function generate_vol_lic {
+        if [ $# -lt 2 ]; then
+                echo "Usage: generate_vol_lic hw_key customer"
+                echo "Example generate_vol_lic 1234.txt mojin"
+                return;
+        fi;
+        source $HOME/packages/licensing/devel/setup.bash
+	roscd ipa_customer_licenses/"$2"
+        rosrun ipa_liblicense ipa_create_new_license -k $HOME/packages/licensing/src/ipa_customer_licenses/keys/"$2".private -h "$1" -v 1 ipa_eband ipa_eband_planner long_term_slam ipa_long_term_slam_ng roadmap_planner path_segment_planner lattice_planner
+}
+
+function sshuttle_str {
+        if [ $# -lt 1 ]; then
+                echo "Usage: sshutle_str user@ip_addr or sshuttle_str alias"
+                echo "Example: sshutle_str kinexon@192.168.0.15 or sshuttle_str str203_extern"
+                return;
+        fi;
+		sshuttle -NHvr $1
+}
