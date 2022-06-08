@@ -3,8 +3,8 @@
 # alias f='zi'
 alias g='lazygit'
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
-alias vimrc='vim ~/.config/nvim/'
-alias zshrc='vim ~/.config/dot_config/zsh'
+alias vimrc='vim $CONFIGDIR/nvim/'
+alias zshrc='vim $ZDOTDIR'
 
 # get fastest mirrors
 # alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
@@ -59,25 +59,22 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 alias ll='ls -alF'
 alias l='ls -CF'
 
-alias ros='. /opt/ros/noetic/setup.bash'
-alias ros2='source /opt/ros/foxy/setup.bash'
-alias fms='source $HOME/packages/fms/install/setup.bash'
-alias ipa_nav='source $HOME/packages/ipa_navigation_ws/devel/setup.bash'
+alias ros='. /opt/ros/noetic/setup.zsh'
+alias ros2='source /opt/ros/foxy/setup.zsh'
+alias fms='source $WSDIR/fms/install/setup.zsh'
+alias ipa_nav='source $WSDIR/nav_ws/devel/setup.zsh'
 alias backend='conda activate backend'
 alias str='
 export ROBOT=str_v3
 export ROBOT_ENV=bmw-factory
-source $HOME/packages/bmw_ws/devel/setup.bash
+source $WSDIR/bmw_ws/devel/setup.zsh
 '
 alias ros1rviz='
-source $HOME/packages/bmw_ws/devel/setup.bash
+source $WSDIR/bmw_ws/devel/setup.bash
 roslaunch bmwstr_bringup rviz.launch localization_backend:=lts_ng robot:=str_v3
 '
 
-
 alias weather='curl -4 http://wttr.in/Stuttgart'
-
-alias cppcheck_this='docker run -v$(pwd):/src:ro registry.gitlab.cc-asp.fraunhofer.de/ipa323_internal/ci_images/cppcheck cppcheck --quiet --error-exitcode=2 --library=googletest /src'
 
 alias stop_containers='
 docker stop $(docker ps -aq)
