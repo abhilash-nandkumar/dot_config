@@ -50,7 +50,7 @@ function rostest_gdb {
 }
 
 function start_sim {
-        source $HOME/packages/ipa_navigation_ws/devel/setup.bash
+        source $WSDIR/nav_ws/devel/setup.zsh
         if [ $# -eq 0 ]; then
                 roslaunch ipa_navigation_simulation sim_only.launch robot:=raw3-3 robot_env:=ipa-apartment
                 return;
@@ -65,7 +65,7 @@ function start_sim {
 }
 
 function start_nav {
-	source $HOME/packages/ipa_navigation_ws/devel/setup.bash
+	source $WSDIR/nav_ws/devel/setup.zsh
         if [ $# -eq 0 ]; then
                 roslaunch ipa_navigation ipa_navigation.launch robot:=raw3-3 robot_env:=ipa-apartment localization_backend:=lts_ng cmd_vel:=/cmd_vel_nav
                 return;
@@ -85,9 +85,9 @@ function generate_vol_lic {
                 echo "Example generate_vol_lic 1234.txt mojin"
                 return;
         fi;
-        source $HOME/packages/licensing/devel/setup.bash
+        source $WSDIR/licensing/devel/setup.bash
 	roscd ipa_customer_licenses/"$2"
-        rosrun ipa_liblicense ipa_create_new_license -k $HOME/packages/licensing/src/ipa_customer_licenses/keys/"$2".private -h "$1" -v 1 ipa_eband ipa_eband_planner long_term_slam ipa_long_term_slam_ng roadmap_planner path_segment_planner lattice_planner
+        rosrun ipa_liblicense ipa_create_new_license -k $WSDIR/licensing/src/ipa_customer_licenses/keys/"$2".private -h "$1" -v 1 ipa_eband ipa_eband_planner long_term_slam ipa_long_term_slam_ng roadmap_planner path_segment_planner lattice_planner
 }
 
 function sshuttle_str {
