@@ -33,10 +33,18 @@ nnoremap("ü", "{") -- goto previous blank space in vertical direction
 nnoremap("+", "}") -- goto next blank space in vertical direction
 
 -- Telescope settings
-nnoremap("<leader>ff", "<cmd>Telescope find_files hidden=true<cr>") -- nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap("<leader>fs", "<cmd>Telescope live_grep hidden=true<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
-nnoremap("<leader>fb", "<cmd>Telescope buffers<cr>") -- nnoremap  <leader>fb <cmd>Telescope buffers<cr>
+-- nnoremap("<leader>ff", "<cmd>Telescope find_files hidden=true<cr>") -- nnoremap <leader>ff <cmd>Telescope find_files<cr>
+-- nnoremap("<leader>fs", "<cmd>Telescope live_grep hidden=true<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
+-- nnoremap("<leader>fd", "<cmd>Telescope grep_string hidden=true<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
+nnoremap("<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
+nnoremap("<leader>r", "<cmd>Telescope resume<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
+nnoremap("<leader>bf", "<cmd>Telescope buffers<cr>") -- nnoremap  <leader>fb <cmd>Telescope buffers<cr>
 nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>") -- nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap("<leader>sh", "<cmd>Telescope search_history<cr>") -- nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap("<leader>dr", "<cmd>lua require('telescope').extensions.ros.packages{cwd=os.getenv('WSDIR') or '.'}<CR>")
+nnoremap("<leader>ff", "<cmd>lua require('telescope').extensions.ros.files{}<CR>")
+nnoremap("<leader>fs", "<cmd>lua require('telescope').extensions.ros.live_grep{}<CR>")
+nnoremap("<leader>fd", "<cmd>lua require('telescope').extensions.ros.grep_string{}<CR>")
 
 -- Git
 nnoremap("<leader>gb", "<cmd>Telescope git_branches<cr>") -- open list of branches

@@ -47,7 +47,7 @@ g["airline#extensions#tabline#right_sep"] = ""
 g["airline#extensions#tabline#right_alt_sep"] = ""
 g["airline#extensions#tabline#fnamemod"] = ":t"
 g.airline_powerline_fonts = true
-g.airline_left_sep = " ❤  "
+-- g.airline_left_sep = " ❤  "
 -- g.airline_right_sep = " 🟆 "
 g.airline_section_y = ""
 g.airline_section_x = ""
@@ -63,5 +63,5 @@ opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- Remove trailing whitespace on save
 -- autocmd BufWritePre * %s/\s\+$//e
 
-opt.listchars = "tab:>~,trail:."
-opt.list = true
+-- opt.listchars = "tab:>~,trail:."
+-- opt.list = true

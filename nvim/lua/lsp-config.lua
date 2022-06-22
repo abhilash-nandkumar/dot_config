@@ -1,4 +1,6 @@
+-- Needs clangd bashls cmake dockerls jsonls texlabpyright, vimls
 local nvim_lsp = require("lspconfig")
+-- local telescope = require("telescope.builtin")
 local lsp_sigs = require("lsp_signature")
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -21,9 +23,16 @@ local custom_attach = function(client, bufnr)
 	buf_set_keymap("n", "<leader>h", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	buf_set_keymap("n", "<leader>fx", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 	buf_set_keymap("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	buf_set_keymap("n", "<leader>r", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+	-- buf_set_keymap("n", "<leader>r", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+	buf_set_keymap("n", "<leader>r", "<cmd>lua require('telescope.builtin').lsp_references{}<CR>", opts)
 	buf_set_keymap("n", "<leader>d", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
 	buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+	buf_set_keymap(
+		"n",
+		"<leader>er",
+		"<cmd>lua vim.lsp.diagnostic.set_loclist({open_loclist=false}); require'telescope.builtin'.loclist{}<CR>",
+		opts
+	)
 	buf_set_keymap(
 		"v",
 		"<leader>f",
