@@ -58,7 +58,7 @@ export ROBOT_ENV=bmw-factory
 source $WSDIR/bmw_ws/devel/setup.zsh
 '
 alias ros1rviz='
-source $WSDIR/bmw_ws/devel/setup.bash
+source $WSDIR/bmw_ws/devel/setup.zsh
 roslaunch bmwstr_bringup rviz.launch localization_backend:=lts_ng robot:=str_v3
 '
 
