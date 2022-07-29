@@ -12,7 +12,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls -A --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
-
+	alias diff='diff --color=auto'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
@@ -23,8 +23,12 @@ alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
 
+alias gdb='gdb -q'
+alias v='vim'
+
 # easier to read disk
 alias df='df -h'     # human-readable sizes
+alias du='du -shc $(pwd)/*'     # human-readable sizes
 alias free='free -m' # show sizes in MB
 
 # get top process eating memory
@@ -47,8 +51,8 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 alias ll='ls -alF'
 alias l='ls -CF'
 
-alias ros='. /opt/ros/noetic/setup.zsh'
-alias ros2='source /opt/ros/foxy/setup.zsh'
+alias ros_ws='. /opt/ros/noetic/setup.zsh'
+alias ros2_ws='source /opt/ros/foxy/setup.zsh'
 alias fms='source $WSDIR/fms/install/setup.zsh'
 alias ipa_nav='source $WSDIR/nav_ws/devel/setup.zsh'
 alias backend='conda activate backend'
@@ -68,4 +72,10 @@ alias stop_containers='
 docker stop $(docker ps -aq)
 docker rm $(docker ps -aq)
 '
+
+# Catkin configs
+alias ckin_dbg_cfg='catkin config --cmake-args "-DCMAKE_EXPORT_COMPILE_COMMANDS=1" "-DCMAKE_BUILD_TYPE=Debug" -DCMAKE_CXX_FLAGS="-Werror=uninitialized -Werror=return-type -Werror=format -Wsign-compare -ggdb"'
+alias ckin_rel_cfg='catkin config --cmake-args "-DCMAKE_EXPORT_COMPILE_COMMANDS=1" "-DCMAKE_BUILD_TYPE=Release" -DCMAKE_CXX_FLAGS="-Werror=uninitialized -Werror=return-type -Werror=format -Wsign-compare -ggdb"'
+
+alias trace_lts_ng='rosparam set /lts_ng/trace_output /tmp/lts_ng && rosparam set /lts_ng/trace_debug true'
 
