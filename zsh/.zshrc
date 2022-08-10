@@ -89,4 +89,7 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 # swap escape and caps
 # setxkbmap -option caps:swapescape
 
+# setup thefuck
+eval $(thefuck --alias)
+
 eval "$(starship init zsh)"
