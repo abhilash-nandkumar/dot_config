@@ -1,0 +1,23 @@
+set history save on
+set history remove-duplicates 10
+set history filename ~/.cache/gdb_history
+set print pretty on
+# Print derived type based on vtable info
+set print object on
+set print vtbl on
+# turned off temporarily because of broken symbols
+# set print demangle on 
+# set demangle-style none
+set demangle-style auto
+
+# Pretty printers
+python
+import sys
+sys.path.insert(0, '/usr/share/gcc/python')
+from libstdcxx.v6.printers import register_libstdcxx_printers
+sys.path.insert(0, '/home/abhilash/.config/dot_config/gdb')
+from printers import register_eigen_printers
+
+register_libstdcxx_printers(None)
+register_eigen_printers(None)
+end

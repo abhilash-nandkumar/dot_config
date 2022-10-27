@@ -14,6 +14,47 @@ function zsh_add_plugin() {
     fi
 }
 
+function gdb_attach() {
+	if [ $# -lt 1 ]; then
+		echo "Usage: gdb_attach <process_name>"
+		return;
+	fi;
+		local pid=$(ps -eo comm,pid | grep $1 | awk '{print $2}')
+		echo "PID of $1 found $pid"
+		# gdb -ex 'set target-async 1' -ex 'set non-stop on' -ex "attach $pid"
+		gdb -ex "attach $pid"
+}
+
+function gdb_ros_node() {
+	if [ $# -lt 2 ]; then
+		echo "Usage: gdb_ros_node <pkg_name> <executable>"
+		return;
+	fi;
+	local exec_path=$(catkin_find $1 $2)
+	if [ -z "$exec_path" ]; then
+		echo "Cound not find executable! Please make sure the package is built and sourced!"
+		return;
+	fi;
+	echo "Executable found at $exec_path"
+	gdb -q -ex 'break main' -ex run --args $exec_path "${@:3}"
+}
+
+
+function rostest_lldb {
+	if [ $# -lt 2 ]; then
+		echo "Usage: rostest_gdb package testname [test args]"
+		echo "Use --gtest_filter=SomeRegex* to run specific tests only"
+		return;
+	fi;
+	local exec_path=$(catkin_find $1 $2)
+	if [ -z "$exec_path" ]; then
+		echo "Cound not find executable! Please make sure the package is built and sourced!"
+		return;
+	fi;
+	echo "Executable found at $exec_path"
+    lldb $exec_path "${@:3}"
+}
+
 function zsh_add_completion() {
     PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
     if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
@@ -46,7 +87,7 @@ function rostest_gdb {
 		echo "Use --gtest_filter=SomeRegex* to run specific tests only"
 		return;
 	fi;
-  gdb --args "$(catkin_find "$1" "$2")" "${@:3}"
+	gdb --args "$(catkin_find "$1" "$2")" "${@:3}"
 }
 
 function start_sim {

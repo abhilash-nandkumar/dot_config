@@ -25,6 +25,9 @@ alias rm='rm -i'
 alias gdb='gdb -q'
 alias v='vim'
 
+# grep
+alias -g gp='| grep -i'
+
 # easier to read disk
 alias df='df -h'     # human-readable sizes
 alias du='du -shc $(pwd)/*'     # human-readable sizes
@@ -73,8 +76,11 @@ docker rm $(docker ps -aq)
 '
 
 # Catkin configs
-alias ckin_dbg_cfg='catkin config --cmake-args "-DCMAKE_EXPORT_COMPILE_COMMANDS=1" "-DCMAKE_BUILD_TYPE=Debug" -DCMAKE_CXX_FLAGS="-Werror=uninitialized -Werror=return-type -Werror=format -Wsign-compare -ggdb"'
-alias ckin_rel_cfg='catkin config --cmake-args "-DCMAKE_EXPORT_COMPILE_COMMANDS=1" "-DCMAKE_BUILD_TYPE=Release" -DCMAKE_CXX_FLAGS="-Werror=uninitialized -Werror=return-type -Werror=format -Wsign-compare -ggdb"'
+ckin_warn_cfg="-DCMAKE_CXX_FLAGS=-Werror=uninitialized -Werror=return-type -Werror=format -Wsign-compare -ggdb"
+ccache_cfg="-DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache"
+alias -g ckin_dbg_cfg='catkin config --cmake-args "-DCMAKE_EXPORT_COMPILE_COMMANDS=1" "-DCMAKE_BUILD_TYPE=Debug" $ckin_warn_cfg $ccache_cfg'
+alias -g ckin_rel_cfg='catkin config --cmake-args "-DCMAKE_EXPORT_COMPILE_COMMANDS=1" "-DCMAKE_BUILD_TYPE=Release" "-DCATKIN_ENABLE_TESTING=0" $ckin_warn_cfg $ccache_cfg'
+alias -g ckin_rel_cfg_test='catkin config --cmake-args "-DCMAKE_EXPORT_COMPILE_COMMANDS=1" "-DCMAKE_BUILD_TYPE=Release" "-DCATKIN_ENABLE_TESTING=1" $ckin_warn_cfg $ccache_cfg'
 
 alias trace_lts_ng='rosparam set /lts_ng/trace_output /tmp/lts_ng && rosparam set /lts_ng/trace_debug true'
 
