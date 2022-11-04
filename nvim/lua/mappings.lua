@@ -5,11 +5,11 @@ local map = vim.api.nvim_set_keymap
 options = { noremap = true, silent = true }
 
 function nnoremap(shortcut, command)
-	map("n", shortcut, command, { noremap = true, silent = true })
+	map("n", shortcut, command, { noremap = true })
 end
 
 function nmap(shortcut, command)
-	map("n", shortcut, command, { silent = true })
+	map("n", shortcut, command, {})
 end
 
 function imap(shortcut, command)
@@ -80,7 +80,7 @@ nnoremap("<C-l>", "<C-W><C-L>") -- nnoremap <C-L> <C-W><C-L>
 nnoremap("<C-h>", "<C-W><C-H>") -- nnoremap <C-H> <C-W><C-H>
 
 nnoremap("<A-v>", ":vsplit<CR>")
-nnoremap("<A-h>", ":split<CR>")
+nnoremap("<A-b>", ":split<CR>")
 
 -- Go to tab by number
 nnoremap("<Tab>", ":bnext<CR>")
