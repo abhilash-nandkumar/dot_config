@@ -61,7 +61,10 @@ opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Remove trailing whitespace on save
--- autocmd BufWritePre * %s/\s\+$//e
+cmd([[autocmd BufWritePre * %s/s+$//e]])
+
+-- Autoformat using lsp
+cmd([[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]])
 
 -- opt.listchars = "tab:>~,trail:."
 -- opt.list = true
