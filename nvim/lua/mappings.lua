@@ -102,3 +102,15 @@ map("v", "S", ":s//<Left>", { noremap = true })
 -- Alias write and quit to Q
 nnoremap("<leader>q", ":wq<CR>")
 nnoremap("<leader>w", ":w<CR>")
+
+-- nvim-ufo for Folding
+nnoremap("zR", "<cmd>lua require('ufo').openAllFolds()<CR>")
+nnoremap("zM", "<cmd>lua require('ufo').closeAllFolds()<CR>")
+nnoremap("zr", "<cmd>lua require('ufo').openFoldsExceptKinds()<CR>")
+nnoremap("zm", "<cmd>lua require('ufo').closeFoldsWith()<CR>") -- closeAllFolds == closeFoldsWith(0)
+vim.keymap.set("n", "K", function()
+	local winid = require("ufo").peekFoldedLinesUnderCursor()
+	if not winid then
+		vim.lsp.buf.hover()
+	end
+end)

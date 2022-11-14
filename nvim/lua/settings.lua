@@ -55,10 +55,12 @@ g.laststatus = 2
 opt.showtabline = 2
 opt.showmode = false
 
--- Treesitter
-opt.foldlevel = 20
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- nvim-ufo
+-- opt.foldlevelstart = -1
+vim.o.foldcolumn = "3" -- '0' is not bad
+-- vim.o.foldlevel= 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 5
+vim.o.foldenable = true
 
 -- Remove trailing whitespace on save
 cmd([[autocmd BufWritePre * %s/s+$//e]])
