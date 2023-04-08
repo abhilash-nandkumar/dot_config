@@ -114,3 +114,11 @@ vim.keymap.set("n", "K", function()
 		vim.lsp.buf.hover()
 	end
 end)
+
+-- trouble.nvim
+nnoremap("<leader>xx", "<cmd>TroubleToggle<cr>")
+nnoremap("<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
+nnoremap("<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>")
+nnoremap("<leader>xl", "<cmd>TroubleToggle loclist<cr>")
+nnoremap("<leader>xq", "<cmd>TroubleToggle quickfix<cr>")
+nnoremap("gR", "<cmd>TroubleToggle lsp_references<cr>")
