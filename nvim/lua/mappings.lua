@@ -67,6 +67,7 @@ nmap("<F1>", ":Startify<CR>")
 
 -- NERDTree
 map("", "<F5>", ": NERDTreeToggle<CR>", { silent = true }) -- map <silent> <F5> : NERDTreeToggle<CR>
+nnoremap("<leader>r", ": NERDTreeFind<CR>", { silent = true }) -- map <silent> <F5> : NERDTreeToggle<CR>
 
 -- moving text
 nnoremap("Y", "y$") -- nnoremap Y y$
