@@ -64,8 +64,8 @@ export ROBOT_ENV=bmw-factory
 source $WSDIR/bmw_ws/devel/setup.zsh
 '
 alias ros1rviz='
-source $WSDIR/bmw_ws/devel/setup.zsh
-roslaunch bmwstr_bringup rviz.launch localization_backend:=lts_ng robot:=str_v3
+source $WSDIR/nav_ws/devel/setup.zsh
+rviz -d $(rospack find ipa_navigation_config)/config/nav_config.rviz
 '
 
 alias weather='curl -4 http://wttr.in/Stuttgart'
