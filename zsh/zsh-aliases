@@ -50,13 +50,13 @@ fi
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alhF'
 alias l='ls -CF'
 
 alias ros_ws='. /opt/ros/noetic/setup.zsh'
 alias ros2_ws='source /opt/ros/foxy/setup.zsh'
 alias fms='source $WSDIR/fms/install/setup.zsh'
-alias ipa_nav='source $WSDIR/nav_ws/devel/setup.zsh'
+alias ipa_nav='source $WSDIR/nav_ws/install/setup.zsh'
 alias backend='conda activate backend'
 alias str='
 export ROBOT=str_v3
