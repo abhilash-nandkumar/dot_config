@@ -37,7 +37,7 @@ nnoremap("<leader>ff", "<cmd>Telescope find_files hidden=true<cr>") -- nnoremap 
 nnoremap("<leader>fs", "<cmd>Telescope live_grep hidden=true<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
 nnoremap("<leader>fd", "<cmd>Telescope grep_string hidden=true<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
 nnoremap("<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
-nnoremap("<leader>r", "<cmd>Telescope resume<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
+nnoremap("<leader>rs", "<cmd>Telescope resume<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
 nnoremap("<leader>bf", "<cmd>Telescope buffers<cr>") -- nnoremap  <leader>fb <cmd>Telescope buffers<cr>
 nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>") -- nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap("<leader>sh", "<cmd>Telescope search_history<cr>") -- nnoremap <leader>fh <cmd>Telescope help_tags<cr>
@@ -67,7 +67,7 @@ nmap("<F1>", ":Startify<CR>")
 
 -- NERDTree
 map("", "<F5>", ": NERDTreeToggle<CR>", { silent = true }) -- map <silent> <F5> : NERDTreeToggle<CR>
-nnoremap("<leader>r", ": NERDTreeFind<CR>", { silent = true }) -- map <silent> <F5> : NERDTreeToggle<CR>
+nnoremap("<leader>gf", ": NERDTreeFind<CR>", { silent = true }) -- map <silent> <F5> : NERDTreeToggle<CR>
 
 -- moving text
 nnoremap("Y", "y$") -- nnoremap Y y$
