@@ -122,3 +122,8 @@ nnoremap("<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>")
 nnoremap("<leader>xl", "<cmd>TroubleToggle loclist<cr>")
 nnoremap("<leader>xq", "<cmd>TroubleToggle quickfix<cr>")
 nnoremap("gR", "<cmd>TroubleToggle lsp_references<cr>")
+
+-- dap
+nnoremap("<F5>", "<cmd>lua require'dap'.continue()<CR>")
+nnoremap("<leader>b", "<cmd>lua require'dap'.toggle_breakpoint()<CR>")
+nnoremap("<leader>b", "<cmd>lua require'dap'.toggle_breakpoint()<CR>")

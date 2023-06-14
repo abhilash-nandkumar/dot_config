@@ -38,6 +38,13 @@ return require("packer").startup(function()
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("ray-x/lsp_signature.nvim")
 
+	--Debugging
+	use("mfussenegger/nvim-dap")
+	use("rcarriga/cmp-dap")
+	use("theHamsta/nvim-dap-virtual-text")
+	use("nvim-telescope/telescope-dap.nvim")
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+
 	-- completion
 	use("hrsh7th/nvim-cmp")
 	use({
