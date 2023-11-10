@@ -56,15 +56,16 @@ alias l='ls -CF'
 alias ros_ws='. /opt/ros/noetic/setup.zsh'
 alias ros2_ws='source /opt/ros/foxy/setup.zsh'
 alias fms='source $WSDIR/fms/install/setup.zsh'
-alias ipa_nav='source $WSDIR/nav_ws/devel/setup.zsh'
-alias backend='conda activate backend'
+alias ipa_nav='source $WSDIR/nav_ws/install/setup.zsh'
+# alias backend='conda activate backend'
+alias provision='conda activate node'
 alias str='
 export ROBOT=str_v3
 export ROBOT_ENV=bmw-factory
 source $WSDIR/bmw_ws/devel/setup.zsh
 '
 alias ros1rviz='
-source $WSDIR/nav_ws/devel/setup.zsh
+source $WSDIR/nav_ws/install/setup.zsh
 rviz -d $(rospack find ipa_navigation_config)/config/nav_config.rviz
 '
 
@@ -75,9 +76,19 @@ docker stop $(docker ps -aq)
 docker rm $(docker ps -aq)
 '
 
-# Catkin config
-ccon_no_warn_cfg="'-DCMAKE_EXPORT_COMPILE_COMMANDS=1' '-DCMAKE_BUILD_TYPE=Release' '-DCMAKE_CXX_FLAGS=-w -ggdb -fdiagnostics-color=always' '-DCMAKE_C_COMPILER_LAUNCHER=ccache' '-DCMAKE_CXX_COMPILER_LAUNCHER=ccache'"
-alias ccon_nowarn="colcon build $ccon_no_warn --event-handlers console_direct+"
+alias is_ros_workspace='[ -n "${ROS_WORKSPACE}" ] && [ -d "${ROS_WORKSPACE}" ] || (echo "Not a ROS workspace" && false)'
+alias cdbase='is_ros_workspace && cd $ROS_WORKSPACE'
+alias cds='is_ros_workspace && cd $ROS_WORKSPACE/src'
+alias cdbuild='is_ros_workspace && cd $ROS_WORKSPACE/build'
+alias cddev='is_ros_workspace && cd $ROS_WORKSPACE/devel/.private'
+
+alias colb='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" build --base-paths "${ROS_WORKSPACE}" --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_FLAGS=-ggdb --symlink-install --build-base "${ROS_WORKSPACE}/build" --install-base ${ROS_WORKSPACE}/install'
+alias colt='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" test --base-paths "${ROS_WORKSPACE}" --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_FLAGS=-ggdb --symlink-install --build-base "${ROS_WORKSPACE}/build" --install-base "${ROS_WORKSPACE}/install"'
+alias colbthis='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_FLAGS=-ggdb --symlink-install --build-base "${ROS_WORKSPACE}/build" --install-base "${ROS_WORKSPACE}/install"'
+alias coltr='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" test-result --test-result-base "${ROS_WORKSPACE}/build" --verbose'
+alias colrelbuild='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" build --base-paths "${ROS_WORKSPACE}" --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Release -DSANITIZE=OFF -DBUILD_TESTING=OFF -DCMAKE_CXX_FLAGS=-ggdb --symlink-install --build-base "${ROS_WORKSPACE}/build" --install-base "${ROS_WORKSPACE}/install"'
+
+# Catkin configs
 ckin_warn_cfg="-DCMAKE_CXX_FLAGS=-Werror=uninitialized -Werror=return-type -Werror=format -Wsign-compare -ggdb"
 ccache_cfg="-DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache"
 alias -g ckin_dbg_cfg='catkin config --cmake-args "-DCMAKE_EXPORT_COMPILE_COMMANDS=1" "-DCMAKE_BUILD_TYPE=Debug" $ckin_warn_cfg $ccache_cfg'

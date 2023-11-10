@@ -90,23 +90,45 @@ function rostest_gdb {
 	gdb --args "$(catkin_find "$1" "$2")" "${@:3}"
 }
 
+
+function ccon_test {
+	if [ $# -lt 1 ]; then
+		echo "Usage: ccon_test package" 
+		return;
+	fi;
+	colcon test --ctest-args "tests" --packages-select $1 --event-handler console_direct+
+}
+
 function start_sim {
-        source $WSDIR/nav_ws/devel/setup.zsh
+        source $WSDIR/nav_ws/install/setup.zsh
         if [ $# -eq 0 ]; then
-                roslaunch ipa_navigation_simulation sim_only.launch robot:=raw3-3 robot_env:=bmw-factory
+                roslaunch ipa_navigation_simulation virtual_robot_nav.launch robot:=raw3-3 robot_env:=bmw-factory planning_backend:=move_base_flex_bt
                 return;
         elif [ $# -eq 2 ]; then
-                roslaunch ipa_navigation_simulation sim_only.launch robot:="$1" robot_env:="$2"
+                roslaunch ipa_navigation_simulation virtual_robot_nav.launch robot:="$1" robot_env:="$2" planning_backend:=move_base_flex_bt 
                 return;
         else
-                #echo "Usage: start_sim robot robot_env"
-                #echo "Example start_sim raw3-3 ipa-apartment"
+                echo "Example start_sim raw3-3 ipa-apartment"
+                return;
+        fi 
+}
+
+function start_sim_full {
+        source $WSDIR/nav_ws/install/setup.zsh
+        if [ $# -eq 0 ]; then
+                roslaunch ipa_navigation_simulation virtual_robot_nav.launch groundtruth_localization:=false robot:=raw3-3 robot_env:=bmw-factory planning_backend:=move_base_flex_bt 
+                return;
+        elif [ $# -eq 2 ]; then
+                roslaunch ipa_navigation_simulation virtual_robot_nav.launch groundtruth_localization:=false robot:="$1" robot_env:="$2" planning_backend:=move_base_flex_bt 
+                return;
+        else
+                echo "Example start_sim raw3-3 ipa-apartment"
                 return;
         fi 
 }
 
 function start_nav {
-	source $WSDIR/nav_ws/devel/setup.zsh
+	source $WSDIR/nav_ws/install/setup.zsh
         if [ $# -eq 0 ]; then
                 roslaunch ipa_navigation ipa_navigation.launch robot:=raw3-3 robot_env:=bmw-factory localization_backend:=lts_ng cmd_vel:=/cmd_vel_nav
                 return;
