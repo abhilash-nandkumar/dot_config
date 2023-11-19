@@ -9,6 +9,7 @@ telescope.setup({
 		},
 		layout_strategy = "vertical",
 		layout_config = { width = 0.95 },
+		file_ignore_patterns = { ".git/", ".cache", "%.pdf", "%.rviz" },
 	},
 	pickers = {
 		live_grep = {
