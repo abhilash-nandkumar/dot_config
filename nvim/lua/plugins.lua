@@ -81,13 +81,13 @@ return require("packer").startup(function()
 			require("todo-comments").setup({})
 		end,
 	})
-	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("trouble").setup({})
-		end,
-	})
+	-- use({
+	-- 	"folke/trouble.nvim",
+	-- 	requires = "kyazdani42/nvim-web-devicons",
+	-- 	config = function()
+	-- 		require("trouble").setup({})
+	-- 	end,
+	-- })
 	use("voldikss/vim-floaterm")
 	use("vim-airline/vim-airline")
 	use("vim-airline/vim-airline-themes")
@@ -95,5 +95,5 @@ return require("packer").startup(function()
 	use("airblade/vim-rooter")
 	use("tpope/vim-commentary")
 	use("moll/vim-bbye")
-	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
+	-- use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 end)

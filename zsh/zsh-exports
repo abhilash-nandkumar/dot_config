@@ -31,4 +31,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-source /opt/ros/noetic/setup.zsh
+#source /opt/ros/noetic/setup.zsh

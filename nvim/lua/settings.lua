@@ -66,7 +66,7 @@ vim.o.foldenable = true
 cmd([[autocmd BufWritePre * %s/s+$//e]])
 
 -- Autoformat using lsp
-cmd([[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]])
+-- cmd([[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]])
 
 -- opt.listchars = "tab:>~,trail:."
 -- opt.list = true

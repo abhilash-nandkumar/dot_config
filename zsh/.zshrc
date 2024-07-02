@@ -1,6 +1,7 @@
 #!/bin/sh
 HISTFILE=~/.zsh_history
 setopt appendhistory
+setopt sharehistory
 
 # some useful options (man zshoptions)
 setopt autocd extendedglob nomatch menucomplete
@@ -92,4 +93,23 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 # setup thefuck
 eval $(thefuck --alias)
 
+source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
+
 eval "$(starship init zsh)"
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/abhilash/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/abhilash/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/abhilash/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/abhilash/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

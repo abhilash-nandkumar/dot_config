@@ -23,6 +23,7 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 alias gdb='gdb -q'
+alias gdb_break='gdb -ex "break main" -ex run'
 alias v='vim'
 
 # grep
@@ -56,51 +57,32 @@ alias l='ls -CF'
 alias ros_ws='. /opt/ros/noetic/setup.zsh'
 alias ros2_ws='source /opt/ros/foxy/setup.zsh'
 alias fms='source $WSDIR/fms/install/setup.zsh'
-alias ipa_nav='source $WSDIR/nav_ws/install/setup.zsh'
+alias ipa_nav='source $WSDIR/nav/install/setup.zsh'
 # alias backend='conda activate backend'
 alias provision='conda activate node'
 alias str='
 export ROBOT=str_v3
 export ROBOT_ENV=bmw-factory
-source $WSDIR/bmw_ws/devel/setup.zsh
+source $WSDIR/bmw/devel/setup.zsh
 '
 alias ros1rviz='
-source $WSDIR/nav_ws/install/setup.zsh
+source $WSDIR/nav/install/setup.zsh
 rviz -d $(rospack find ipa_navigation_config)/config/nav_config.rviz
 '
 
 alias weather='curl -4 http://wttr.in/Stuttgart'
+alias ncal3='ncal -3 -w'
+alias sau='sudo apt update && apt list --upgradable'
 
 alias stop_containers='
 docker stop $(docker ps -aq)
 docker rm $(docker ps -aq)
 '
 
-alias is_ros_workspace='[ -n "${ROS_WORKSPACE}" ] && [ -d "${ROS_WORKSPACE}" ] || (echo "Not a ROS workspace" && false)'
-alias cdbase='is_ros_workspace && cd $ROS_WORKSPACE'
-alias cds='is_ros_workspace && cd $ROS_WORKSPACE/src'
-alias cdbuild='is_ros_workspace && cd $ROS_WORKSPACE/build'
-alias cddev='is_ros_workspace && cd $ROS_WORKSPACE/devel/.private'
-
-alias colb='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" build --base-paths "${ROS_WORKSPACE}" --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_FLAGS=-ggdb --symlink-install --build-base "${ROS_WORKSPACE}/build" --install-base ${ROS_WORKSPACE}/install'
-alias colt='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" test --base-paths "${ROS_WORKSPACE}" --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_FLAGS=-ggdb --symlink-install --build-base "${ROS_WORKSPACE}/build" --install-base "${ROS_WORKSPACE}/install"'
-alias colbthis='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_FLAGS=-ggdb --symlink-install --build-base "${ROS_WORKSPACE}/build" --install-base "${ROS_WORKSPACE}/install"'
-alias coltr='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" test-result --test-result-base "${ROS_WORKSPACE}/build" --verbose'
-alias colrelbuild='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" build --base-paths "${ROS_WORKSPACE}" --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Release -DSANITIZE=OFF -DBUILD_TESTING=OFF -DCMAKE_CXX_FLAGS=-ggdb --symlink-install --build-base "${ROS_WORKSPACE}/build" --install-base "${ROS_WORKSPACE}/install"'
-
-# Catkin configs
-ckin_warn_cfg="-DCMAKE_CXX_FLAGS=-Werror=uninitialized -Werror=return-type -Werror=format -Wsign-compare -ggdb"
-ccache_cfg="-DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache"
-alias -g ckin_dbg_cfg='catkin config --cmake-args "-DCMAKE_EXPORT_COMPILE_COMMANDS=1" "-DCMAKE_BUILD_TYPE=Debug" $ckin_warn_cfg $ccache_cfg'
-alias -g ckin_rel_cfg='catkin config --cmake-args "-DCMAKE_EXPORT_COMPILE_COMMANDS=1" "-DCMAKE_BUILD_TYPE=Release" "-DCATKIN_ENABLE_TESTING=0" $ckin_warn_cfg $ccache_cfg'
-alias -g ckin_rel_cfg_test='catkin config --cmake-args "-DCMAKE_EXPORT_COMPILE_COMMANDS=1" "-DCMAKE_BUILD_TYPE=Release" "-DCATKIN_ENABLE_TESTING=1" $ckin_warn_cfg $ccache_cfg'
-
-alias trace_lts_ng='rosparam set /lts_ng/trace_output /tmp/lts_ng && rosparam set /lts_ng/trace_debug true'
-
 # git
 alias gc="git commit"
 alias gs="git status"
-alias gd="git diff"
+alias gd="git difftool --dir-diff"
 alias gf="git fetch"
 alias gm="git merge"
 alias gma="git merge --abort"
@@ -114,3 +96,77 @@ alias gA="git add -A"
 alias gri="git rebase -i"
 alias grc="git rebase --continue"
 alias gra="git rebase --abort"
+
+
+function rsource_ros2_base {
+  local ROS_ROOT
+  [ -d "/opt/ros/foxy" ] && . /opt/ros/foxy/setup.zsh
+  [ -e /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh ]\
+    && . /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
+  [ -e /usr/share/colcon_cd/function/colcon_cd.sh ]\
+    && . /usr/share/colcon_cd/function/colcon_cd.sh
+}
+
+function rsource {
+  local ROS_ROOT
+  [ -d "/opt/ros/melodic" ] && ROS_ROOT="/opt/ros/melodic/setup.zsh"
+  [ -d "/opt/ros/kinetic" ] && ROS_ROOT="/opt/ros/kinetic/setup.zsh"
+  [ -d "/opt/ros/noetic" ] && ROS_ROOT="/opt/ros/noetic/setup.zsh"
+  # ROS2 things
+  [ -e /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh ]\
+    && . /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
+  [ -e /usr/share/colcon_cd/function/colcon_cd.sh ]\
+    && . /usr/share/colcon_cd/function/colcon_cd.sh
+	local WS_ROOT="git"
+	local ws
+  ws=$(pwd | grep -o -e "^/home/${USER}/${WS_ROOT}/[^\/]\+")
+	if [ -z "$ws" ]; then
+		echo "Not inside a workspace, sourcing from ${ROS_ROOT}";
+		source "${ROS_ROOT}"
+		return 0;
+	fi
+  for cs in "install" "devel"; do
+    local Path="${ws}/${cs}/setup.zsh"
+    if [ -e "${Path}" ]; then
+      echo "Sourcing workspace in ${Path}";
+      source "${Path}";
+      return 0;
+    fi
+  done
+  echo "Devel space not found";
+  return 2;
+}
+
+function cdws {
+  if [ $# -lt 1 ]; then
+    echo "No ws!"
+    return
+  fi
+  local workspace=~/git/${1}
+  if [ -d "${workspace}" ]; then
+    export ROS_WORKSPACE=${workspace}
+		export RCUTILS_COLORIZED_OUTPUT=1
+    cd "${workspace}/src/${1}" 2>/dev/null || cd "${workspace}/src/" || cd "${workspace}" || return
+    if [ -e "${workspace}/.built_by" ]; then
+			rsource_ros2_base
+		else
+			rsource
+		fi
+  fi
+}
+
+alias is_ros_workspace='[ -n "${ROS_WORKSPACE}" ] && [ -d "${ROS_WORKSPACE}" ] || (echo "Not a ROS workspace" && false)'
+alias cdbase='is_ros_workspace && cd $ROS_WORKSPACE'
+alias cds='is_ros_workspace && cd $ROS_WORKSPACE/src'
+alias cdbuild='is_ros_workspace && cd $ROS_WORKSPACE/build'
+alias cddev='is_ros_workspace && cd $ROS_WORKSPACE/devel/.private'
+
+alias colb='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" build --base-paths "${ROS_WORKSPACE}" --cmake-args -DCMAKE_CXX_FLAGS="-ggdb -fdiagnostics-color=always" -DCATKIN_ENABLE_TESTING=0 --symlink-install --build-base "${ROS_WORKSPACE}/build" --install-base ${ROS_WORKSPACE}/install --mixin release compile-commands ccache --event-handler console_direct+'
+alias colt='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" test --base-paths "${ROS_WORKSPACE}" --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_FLAGS=-ggdb --symlink-install --build-base "${ROS_WORKSPACE}/build" --install-base "${ROS_WORKSPACE}/install" --event-handler console_direct+'
+alias colbthis_test='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" build --cmake-args -DCMAKE_CXX_FLAGS="-ggdb -fdiagnostics-color=always" --symlink-install --build-base "${ROS_WORKSPACE}/build" --install-base "${ROS_WORKSPACE}/install" --mixin release compile-commands ccache --event-handler console_direct+'
+alias colbthis='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" build --cmake-args -DCMAKE_CXX_FLAGS="-ggdb -fdiagnostics-color=always" -DCATKIN_ENABLE_TESTING=0 --symlink-install --build-base "${ROS_WORKSPACE}/build" --install-base "${ROS_WORKSPACE}/install" --mixin release compile-commands ccache --event-handler console_direct+'
+alias coltr='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" test-result --test-result-base "${ROS_WORKSPACE}/build" --verbose'
+alias colrelbuild='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" build --base-paths "${ROS_WORKSPACE}" --cmake-args -DCMAKE_CXX_FLAGS="-ggdb -fdiagnostics-color=always" --symlink-install --build-base "${ROS_WORKSPACE}/build" --install-base "${ROS_WORKSPACE}/install" --mixin compile-commands ccache --event-handler console_direct+'
+
+alias noetic_container='docker exec -it noetic_build zsh'
+alias iron_container='docker exec -it iron_build zsh'

@@ -33,7 +33,7 @@ nnoremap("ü", "{") -- goto previous blank space in vertical direction
 nnoremap("+", "}") -- goto next blank space in vertical direction
 
 -- Telescope settings
-nnoremap("<leader>ff", "<cmd>Telescope find_files hidden=true<cr>") -- nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>") -- nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap("<leader>fs", "<cmd>Telescope live_grep hidden=true<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
 nnoremap("<leader>fd", "<cmd>Telescope grep_string hidden=true<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
 nnoremap("<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
@@ -125,6 +125,6 @@ nnoremap("<leader>xq", "<cmd>TroubleToggle quickfix<cr>")
 nnoremap("gR", "<cmd>TroubleToggle lsp_references<cr>")
 
 -- dap
-nnoremap("<F5>", "<cmd>lua require'dap'.continue()<CR>")
-nnoremap("<leader>b", "<cmd>lua require'dap'.toggle_breakpoint()<CR>")
-nnoremap("<leader>b", "<cmd>lua require'dap'.toggle_breakpoint()<CR>")
+-- nnoremap("<F5>", "<cmd>lua require'dap'.continue()<CR>")
+-- nnoremap("<leader>b", "<cmd>lua require'dap'.toggle_breakpoint()<CR>")
+-- nnoremap("<leader>b", "<cmd>lua require'dap'.toggle_breakpoint()<CR>")
