@@ -29,6 +29,7 @@ zle -N down-line-or-beginning-search
 # Colors
 autoload -Uz colors && colors
 
+local ZDOTDIR=$CONFIGDIR/zsh
 # Useful Functions
 source "$ZDOTDIR/zsh-functions"
 
@@ -60,7 +61,7 @@ zsh_add_plugin "hlissner/zsh-autopair"
 # bindkey -r "^u"
 # bindkey -r "^d"
 
-# FZF 
+# FZF
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
