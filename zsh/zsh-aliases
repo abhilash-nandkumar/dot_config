@@ -24,7 +24,7 @@ alias rm='rm -i'
 
 alias gdb='gdb -q'
 alias gdb_break='gdb -ex "break main" -ex run'
-alias v='vim'
+alias v='nvim'
 
 # grep
 alias -g gp='| grep -i'
