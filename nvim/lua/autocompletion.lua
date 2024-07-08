@@ -24,8 +24,8 @@ cmp.setup({
 		end,
 	},
 	mapping = {
-		["<C-p>"] = cmp.mapping.select_prev_item(),
-		["<C-n>"] = cmp.mapping.select_next_item(),
+		["<C-j>"] = cmp.mapping.select_prev_item(),
+		["<C-k>"] = cmp.mapping.select_next_item(),
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
@@ -58,12 +58,12 @@ cmp.setup({
 		return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
 	end,
 	sources = {
-		-- { name = "nvim_lua" },
 		{ name = "nvim_lsp" },
-		-- { name = "path" },
 		{ name = "luasnip" },
-		{ name = "dap" },
-		-- { name = "buffer", keyword_length = 5 },
+		-- { name = "dap" },
+		-- { name = "nvim_lua" },
+		-- { name = "path" },
+		{ name = "buffer", keyword_length = 5 },
 	},
 	-- formatting = {
 	-- 	format = lspkind.cmp_format({
