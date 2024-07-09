@@ -35,7 +35,6 @@ return require("packer").startup(function()
 
 	-- LSP
 	use("neovim/nvim-lspconfig")
-	use("jose-elias-alvarez/null-ls.nvim")
 	use("ray-x/lsp_signature.nvim")
 
 	--Debugging
@@ -95,5 +94,5 @@ return require("packer").startup(function()
 	use("airblade/vim-rooter")
 	use("tpope/vim-commentary")
 	use("moll/vim-bbye")
-	-- use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 end)
