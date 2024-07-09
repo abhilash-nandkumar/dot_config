@@ -48,7 +48,7 @@ local custom_attach = function(client, bufnr)
 end
 
 nvim_lsp.clangd.setup({
-	cmd = { "docker", "exec", "-i",  "noetic_build", "clangd", "--log=error", "--background-index", "--clang-tidy", "-j=4" },
+	cmd = { "clangd-18", "--log=error", "--background-index", "--clang-tidy", "-j=4" },
 	on_attach = custom_attach,
 	capabilities = capabilities,
 })
@@ -62,10 +62,10 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
-local sumneko_root_path = os.getenv("HOME") .. "/.config/lua-language-server"
-local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
+local lua_ls_root_path = os.getenv("HOME") .. "/.local/lua-language-server"
+local lua_ls_binary = lua_ls_root_path .. "/bin/lua-language-server"
 nvim_lsp.lua_ls.setup({
-	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+	cmd = { lua_ls_binary, "-E", lua_ls_root_path .. "/main.lua" },
 	capabilities = capabilities,
 	settings = {
 		Lua = {
@@ -91,11 +91,3 @@ nvim_lsp.lua_ls.setup({
 	on_attach = custom_attach,
 })
 
--- Extra formatting and Linting
-require("null-ls").setup({
-	sources = {
-		require("null-ls").builtins.formatting.stylua,
-		require("null-ls").builtins.formatting.black,
-		require("null-ls").builtins.diagnostics.flake8,
-	},
-})
