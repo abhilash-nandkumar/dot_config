@@ -60,13 +60,13 @@ nnoremap("´", "*") -- goto next search result with + and previous with #
 nnoremap("<leader>hl", ":set hlsearch!<CR>") -- toggle highlight search
 
 -- Tagbar
-nmap("<F8>", ":TagbarToggle<CR>") -- nmap <F8> :TagbarToggle<CR>
+nmap("<leader>8", ":TagbarToggle<CR>") -- nmap <leader>8 :TagbarToggle<CR>
 
 -- Startify Home Page
-nmap("<F1>", ":Startify<CR>")
+nmap("<leader>1", ":Startify<CR>")
 
 -- NERDTree
-map("", "<F5>", ": NERDTreeToggle<CR>", { silent = true }) -- map <silent> <F5> : NERDTreeToggle<CR>
+map("", "<leader>5", ": NERDTreeToggle<CR>", { silent = true }) -- map <silent> <F5> : NERDTreeToggle<CR>
 nnoremap("<leader>gf", ": NERDTreeFind<CR>", { silent = true }) -- map <silent> <F5> : NERDTreeToggle<CR>
 
 -- moving text
@@ -86,7 +86,7 @@ nnoremap("<A-b>", ":split<CR>")
 -- Go to tab by number
 nnoremap("<Tab>", ":bnext<CR>")
 nnoremap("<S-Tab>", ":bprev<CR>")
-nnoremap("<leader><F4>", ":bd<CR>")
+nnoremap("<leader>4", ":bd<CR>")
 
 -- floaterm
 vim.g.floaterm_keymap_toggle = "<leader>t"
