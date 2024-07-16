@@ -54,10 +54,11 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 alias ll='ls -alhF'
 alias l='ls -CF'
 
-alias ros_ws='. /opt/ros/noetic/setup.zsh'
-alias ros2_ws='source /opt/ros/foxy/setup.zsh'
-alias fms='source $WSDIR/fms/install/setup.zsh'
-alias ipa_nav='source $WSDIR/nav/install/setup.zsh'
+alias sr1='source /opt/ros/noetic/setup.zsh'
+alias sr1_ws='source /home/abhilash/git/ros1_ws/install/setup.zsh'
+alias sr2='source /opt/ros/foxy/setup.zsh'
+alias sr2_ws='source /home/abhilash/git/ros2_ws/install/setup.zsh'
+
 # alias backend='conda activate backend'
 alias provision='conda activate node'
 alias str='
@@ -66,7 +67,7 @@ export ROBOT_ENV=bmw-factory
 source $WSDIR/bmw/devel/setup.zsh
 '
 alias ros1rviz='
-source $WSDIR/nav/install/setup.zsh
+sr1_ws
 rviz -d $(rospack find ipa_navigation_config)/config/nav_config.rviz
 '
 
