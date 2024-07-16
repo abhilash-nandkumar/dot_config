@@ -100,7 +100,7 @@ function ccon_test {
 }
 
 function start_sim {
-        # source $WSDIR/nav/install/setup.zsh
+		sr1_ws
         if [ $# -eq 0 ]; then
                 roslaunch ipa_navigation_simulation virtual_robot_nav.launch robot:=raw3-3 robot_env:=bmw-factory planning_backend:=move_base_flex_bt
                 return;
@@ -114,7 +114,7 @@ function start_sim {
 }
 
 function start_sim_full {
-        # source $WSDIR/nav/install/setup.zsh
+		sr1_ws
         if [ $# -eq 0 ]; then
                 roslaunch ipa_navigation_simulation virtual_robot_nav.launch groundtruth_localization:=false robot:=raw3-3 robot_env:=bmw-factory planning_backend:=move_base_flex_bt teleport_robot_topic:=/gt_pose 
                 return;
@@ -128,7 +128,7 @@ function start_sim_full {
 }
 
 function start_nav {
-	source $WSDIR/nav/install/setup.zsh
+		sr1_ws
         if [ $# -eq 0 ]; then
                 roslaunch ipa_navigation ipa_navigation.launch robot:=raw3-3 robot_env:=bmw-factory localization_backend:=lts_ng cmd_vel:=/cmd_vel_nav
                 return;
@@ -140,17 +140,6 @@ function start_nav {
                 #echo "Example start_nav raw3-3 ipa-apartment"
                 return;
         fi
-}
-
-function generate_vol_lic {
-        if [ $# -lt 2 ]; then
-                echo "Usage: generate_vol_lic hw_key customer"
-                echo "Example generate_vol_lic 1234.txt mojin"
-                return;
-        fi;
-        source $WSDIR/licensing/devel/setup.zsh
-	roscd ipa_customer_licenses/"$2"
-        rosrun ipa_liblicense ipa_create_new_license -k $WSDIR/licensing/src/ipa_customer_licenses/keys/"$2".private -h "$1" -v 1 ipa_eband ipa_eband_planner long_term_slam ipa_long_term_slam_ng roadmap_planner path_segment_planner lattice_planner
 }
 
 function sshuttle_str {

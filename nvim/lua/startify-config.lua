@@ -32,8 +32,6 @@ g.startify_lists = {
 
 local ws_path = os.getenv("WSDIR")
 g.startify_bookmarks = {
-	{ nav = ws_path .. "/nav/src/navigation" },
-	{ bmw = ws_path .. "/bmw/src/bmwstr" },
-	{ res = ws_path .. "/single-robot-backend" },
+	{ nav = ws_path .. "/ros1_ws/src/navigation" },
 	{ vrc = os.getenv("HOME") .. "/.config/nvim" },
 }

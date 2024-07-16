@@ -61,11 +61,6 @@ alias sr2_ws='source /home/abhilash/git/ros2_ws/install/setup.zsh'
 
 # alias backend='conda activate backend'
 alias provision='conda activate node'
-alias str='
-export ROBOT=str_v3
-export ROBOT_ENV=bmw-factory
-source $WSDIR/bmw/devel/setup.zsh
-'
 alias ros1rviz='
 sr1_ws
 rviz -d $(rospack find ipa_navigation_config)/config/nav_config.rviz
