@@ -55,9 +55,9 @@ alias ll='ls -alhF'
 alias l='ls -CF'
 
 alias sr1='source /opt/ros/noetic/setup.zsh'
-alias sr1_ws='source /home/abhilash/git/ros1_ws/install/setup.zsh'
+alias sr1_ws='source ${WSDIR}/ros1_ws/install/setup.zsh'
 alias sr2='source /opt/ros/foxy/setup.zsh'
-alias sr2_ws='source /home/abhilash/git/ros2_ws/install/setup.zsh'
+alias sr2_ws='source ${WSDIR}/ros2_ws/install/setup.zsh'
 
 # alias backend='conda activate backend'
 alias provision='conda activate node'
