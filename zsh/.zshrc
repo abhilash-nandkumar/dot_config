@@ -1,7 +1,7 @@
 #!/bin/sh
 HISTFILE=~/.zsh_history
 setopt appendhistory
-setopt sharehistory
+# setopt sharehistory
 
 # some useful options (man zshoptions)
 setopt autocd extendedglob nomatch menucomplete
