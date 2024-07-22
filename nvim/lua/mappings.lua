@@ -51,7 +51,7 @@ nnoremap("<leader>gb", "<cmd>Telescope git_branches<cr>") -- open list of branch
 nnoremap("<leader>gc", "<cmd>Telescope git_commits<cr>") -- open list of commit
 nnoremap("<leader>gbc", "<cmd>Telescope git_bcommits<cr>") -- nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-nnoremap("<leader>gs", ":G<cr>") -- Show git status
+nnoremap("<leader>gs", ":vertical G<cr>") -- Show git status
 nnoremap("<leader>gf", ":diffget //2 <CR>") -- select left during merge conflicts
 nnoremap("<leader>gh", ":diffget //3 <CR>") -- select right during merge conflicts
 

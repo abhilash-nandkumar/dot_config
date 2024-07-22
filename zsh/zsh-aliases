@@ -56,9 +56,11 @@ alias l='ls -CF'
 
 alias sr1='source /opt/ros/noetic/setup.zsh'
 alias sr1_ws='source ${WSDIR}/ros1_ws/install/setup.zsh'
-alias sr2='source /opt/ros/foxy/setup.zsh'
+alias sr2='source /opt/ros/iron/setup.zsh'
 alias sr2_ws='source ${WSDIR}/ros2_ws/install/setup.zsh'
 
+alias cdr1='cd ${WSDIR}/ros1_ws/'
+alias cdr2='cd ${WSDIR}/ros2_ws/'
 # alias backend='conda activate backend'
 alias provision='conda activate node'
 alias ros1rviz='
@@ -96,7 +98,7 @@ alias gra="git rebase --abort"
 
 function rsource_ros2_base {
   local ROS_ROOT
-  [ -d "/opt/ros/foxy" ] && . /opt/ros/foxy/setup.zsh
+  [ -d "/opt/ros/iron" ] && . /opt/ros/iron/setup.zsh
   [ -e /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh ]\
     && . /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
   [ -e /usr/share/colcon_cd/function/colcon_cd.sh ]\
