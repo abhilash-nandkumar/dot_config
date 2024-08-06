@@ -20,13 +20,8 @@ return require("packer").startup(function()
 
 	use("nvim-lua/popup.nvim")
 
-	-- NerdTree
-	use("scrooloose/nerdtree")
-	use("Xuyuanp/nerdtree-git-plugin")
-	use("tiagofumo/vim-nerdtree-syntax-highlight")
-	use("ryanoasis/vim-devicons")
-	use("majutsushi/tagbar")
-	use("kyazdani42/nvim-web-devicons")
+	-- NvimTree
+	use { 'nvim-tree/nvim-tree.lua', requires = { 'nvim-tree/nvim-web-devicons'}}
 
 	-- Git
 	use("tpope/vim-fugitive")

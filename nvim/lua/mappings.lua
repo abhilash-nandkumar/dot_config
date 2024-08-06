@@ -65,9 +65,8 @@ nmap("<leader>8", ":TagbarToggle<CR>") -- nmap <leader>8 :TagbarToggle<CR>
 -- Startify Home Page
 nmap("<leader>1", ":Startify<CR>")
 
--- NERDTree
-map("", "<leader>5", ": NERDTreeToggle<CR>", { silent = true }) -- map <silent> <F5> : NERDTreeToggle<CR>
-nnoremap("<leader>gf", ": NERDTreeFind<CR>", { silent = true }) -- map <silent> <F5> : NERDTreeToggle<CR>
+-- NvimTree
+map("", "<leader>5", ": NvimTreeFindFile<CR>",{ silent = true } )
 
 -- moving text
 nnoremap("Y", "y$") -- nnoremap Y y$
