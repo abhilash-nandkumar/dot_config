@@ -67,6 +67,8 @@ nmap("<leader>1", ":Startify<CR>")
 
 -- NvimTree
 map("", "<leader>5", ": NvimTreeFindFile<CR>",{ silent = true } )
+map("", "-", ": Oil<CR>", { silent = true , desc = "Open parent directory" })
+
 
 -- moving text
 nnoremap("Y", "y$") -- nnoremap Y y$

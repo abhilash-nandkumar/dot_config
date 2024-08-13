@@ -20,8 +20,9 @@ return require("packer").startup(function()
 
 	use("nvim-lua/popup.nvim")
 
-	-- NvimTree
-	use { 'nvim-tree/nvim-tree.lua', requires = { 'nvim-tree/nvim-web-devicons'}}
+	-- Oil
+	use ('nvim-tree/nvim-tree.lua')
+	use ('stevearc/oil.nvim')
 
 	-- Git
 	use("tpope/vim-fugitive")
