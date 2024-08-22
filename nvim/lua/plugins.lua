@@ -76,13 +76,13 @@ return require("packer").startup(function()
 			require("todo-comments").setup({})
 		end,
 	})
-	-- use({
-	-- 	"folke/trouble.nvim",
-	-- 	requires = "kyazdani42/nvim-web-devicons",
-	-- 	config = function()
-	-- 		require("trouble").setup({})
-	-- 	end,
-	-- })
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+		config = function()
+			require("trouble").setup({})
+		end,
+	})
 	use("voldikss/vim-floaterm")
 	use("vim-airline/vim-airline")
 	use("vim-airline/vim-airline-themes")

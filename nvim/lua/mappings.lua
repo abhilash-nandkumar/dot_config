@@ -87,7 +87,7 @@ nnoremap("<A-b>", ":split<CR>")
 -- Go to tab by number
 nnoremap("<Tab>", ":bnext<CR>")
 nnoremap("<S-Tab>", ":bprev<CR>")
-nnoremap("<leader>4", ":bd<CR>")
+nnoremap("4", ":bd<CR>")
 
 -- floaterm
 vim.g.floaterm_keymap_toggle = "<leader>t"
@@ -118,12 +118,11 @@ vim.keymap.set("n", "K", function()
 end)
 
 -- trouble.nvim
-nnoremap("<leader>xx", "<cmd>TroubleToggle<cr>")
-nnoremap("<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
-nnoremap("<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>")
-nnoremap("<leader>xl", "<cmd>TroubleToggle loclist<cr>")
-nnoremap("<leader>xq", "<cmd>TroubleToggle quickfix<cr>")
-nnoremap("gR", "<cmd>TroubleToggle lsp_references<cr>")
+nnoremap("<leader>xx", "<cmd>Trouble<cr>")
+nnoremap("<leader>xd", "<cmd>Trouble diagnostics<cr>")
+nnoremap("<leader>xl", "<cmd>Trouble loclist<cr>")
+nnoremap("<leader>xq", "<cmd>Trouble quickfix<cr>")
+nnoremap("R", "<cmd>Trouble lsp_references<cr>")
 
 -- dap
 -- nnoremap("<F5>", "<cmd>lua require'dap'.continue()<CR>")
