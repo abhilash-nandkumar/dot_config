@@ -56,7 +56,7 @@ alias l='ls -CF'
 
 alias sr1='source /opt/ros/noetic/setup.zsh'
 alias sr1_ws='source ${WSDIR}/ros1_ws/install/setup.zsh'
-alias sr2='source /opt/ros/iron/setup.zsh'
+alias sr2='source /opt/ros/jazzy/setup.zsh'
 alias sr2_ws='source ${WSDIR}/ros2_ws/install/setup.zsh'
 
 alias cdr1='cd ${WSDIR}/ros1_ws/'
@@ -98,7 +98,7 @@ alias gra="git rebase --abort"
 
 function rsource_ros2_base {
   local ROS_ROOT
-  [ -d "/opt/ros/iron" ] && . /opt/ros/iron/setup.zsh
+  [ -d "/opt/ros/jazzy" ] && . /opt/ros/jazzy/setup.zsh
   [ -e /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh ]\
     && . /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
   [ -e /usr/share/colcon_cd/function/colcon_cd.sh ]\
@@ -166,5 +166,5 @@ alias colbthis='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" bui
 alias coltr='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" test-result --test-result-base "${ROS_WORKSPACE}/build" --verbose'
 alias colrelbuild='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" build --base-paths "${ROS_WORKSPACE}" --cmake-args -DCMAKE_CXX_FLAGS="-ggdb -fdiagnostics-color=always" --symlink-install --build-base "${ROS_WORKSPACE}/build" --install-base "${ROS_WORKSPACE}/install" --mixin compile-commands ccache --event-handler console_direct+'
 
+alias jazzy_container='docker exec -it jazzy_build zsh'
 alias noetic_container='docker exec -it noetic_build zsh'
-alias iron_container='docker exec -it iron_build zsh'
