@@ -54,20 +54,24 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 alias ll='ls -alhF'
 alias l='ls -CF'
 
-alias sr1='source /opt/ros/noetic/setup.zsh'
-alias sr1_ws='source ${WSDIR}/ros1_ws/install/setup.zsh'
-alias sr2='source /opt/ros/jazzy/setup.zsh'
-alias sr2_ws='source ${WSDIR}/ros2_ws/install/setup.zsh'
-
 alias cdr1='cd ${WSDIR}/ros1_ws/'
 alias cdr2='cd ${WSDIR}/ros2_ws/'
+
+alias sr1='source /opt/ros/noetic/setup.zsh'
+alias sr1_ws='sr1 && cdr1 && source install/setup.zsh'
+
+alias sr2='source /opt/ros/jazzy/setup.zsh'
+alias sr2_ws='sr2 && cdr2 && source install/setup.zsh'
+
+
 # alias backend='conda activate backend'
 alias provision='conda activate node'
 alias ros1rviz='
 sr1_ws
 rviz -d $(rospack find ipa_navigation_config)/config/nav_config.rviz
 '
-
+alias ros2rviz='sr2 && rviz2 -d ~/git/rviz_config.rviz'
+alias ros2_teleop='sr2_ws && ros2 run key_teleop key_teleop key_vel:=/node_cmd_vel_joy'
 alias weather='curl -4 http://wttr.in/Stuttgart'
 alias ncal3='ncal -3 -w'
 alias sau='sudo apt update && apt list --upgradable'
@@ -168,3 +172,10 @@ alias colrelbuild='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" 
 
 alias jazzy_container='docker exec -it jazzy_build zsh'
 alias noetic_container='docker exec -it noetic_build zsh'
+
+
+alias trace_lts2='ros2 service call /lts_ng/trace ipa_navigation_msgs/srv/Trace "backend_type: ''
+filename: '/tmp/lts'
+level: 3
+"
+'

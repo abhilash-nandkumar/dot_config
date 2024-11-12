@@ -113,6 +113,20 @@ function start_sim {
         fi 
 }
 
+function start_sim2 {
+		sr2_ws
+        if [ $# -eq 0 ]; then
+				ros2 launch ipa_navigation_simulation sim_only.launch robot:=raw-mini name:="CaptainCrunch" robot_env:=arena vr_config:=$(ros2 pkg prefix --share sim_configs) pkg_env_config:=$(ros2 pkg prefix --share nr_sim_test_envs) cmd_vel:=/cmd_vel_nav odometry_topic:=/odom cmd_ackermann:=/cmd_ackermann feedback_ackermann:=/feedback_ackermann
+                return;
+        elif [ $# -eq 2 ]; then
+				ros2 launch ipa_navigation_simulation sim_only.launch robot:="$1" name:="CaptainCrunch" robot_env:="$2" vr_config:=$(ros2 pkg prefix --share sim_configs) pkg_env_config:=$(ros2 pkg prefix --share nr_sim_test_envs) cmd_vel:=/cmd_vel_nav odometry_topic:=/odom cmd_ackermann:=/cmd_ackermann feedback_ackermann:=/feedback_ackermann
+                return;
+        else
+                echo "Example start_sim2 raw3-3 ipa-apartment"
+                return;
+        fi 
+}
+
 function start_sim_full {
 		sr1_ws
         if [ $# -eq 0 ]; then
@@ -128,16 +142,31 @@ function start_sim_full {
 }
 
 function start_nav {
-		sr1_ws
+		sr2_ws
         if [ $# -eq 0 ]; then
                 roslaunch ipa_navigation ipa_navigation.launch robot:=raw3-3 robot_env:=bmw-factory localization_backend:=lts_ng cmd_vel:=/cmd_vel_nav
                 return;
 	elif [ $# -eq 2 ]; then
-		roslaunch ipa_navigation ipa_navigation.launch robot:="$1" robot_env:="$2" localization_backend:=lts_ng cmd_vel:=/cmd_vel_nav
+				roslaunch ipa_navigation ipa_navigation.launch robot:="$1" robot_env:="$2" localization_backend:=lts_ng cmd_vel:=/cmd_vel_nav
                 return;
         else
                 #echo "Usage: start_nav robot robot_env"
                 #echo "Example start_nav raw3-3 ipa-apartment"
+                return;
+        fi
+}
+
+function start_nav2 {
+		sr2_ws
+        if [ $# -eq 0 ]; then
+				ros2 launch node_edge_bringup node_edge.launch robot:=raw3-3 base_frame:=base_footprint odom_frame:=odom_combined map_frame:=map cmd_vel:=/cmd_vel_nav odometry_topic:=/odom map_topic:=/map cmd_ackermann:=/cmd_ackermann feedback_ackermann:=/feedback_ackermann global_planner:=navfn local_planner:=ipa_eband planning_backend:=nav2 obstacle_collision_filter:=True diffmaps_provider:=False lts_backup_folder:=/srv/lts_backups localization_backend:=lts_ng twist_limiter:=False odom_provider:=external_odometry use_wheel_odom:=True pkg_nav_config:=$(ros2 pkg prefix --share ipa_navigation_config)
+                return;
+	elif [ $# -eq 2 ]; then
+				ros2 launch node_edge_bringup node_edge.launch robot:="$1" base_frame:=base_footprint odom_frame:=odom_combined map_frame:=map cmd_vel:=/cmd_vel_nav odometry_topic:=/odom map_topic:=/map cmd_ackermann:=/cmd_ackermann feedback_ackermann:=/feedback_ackermann global_planner:=navfn local_planner:=ipa_eband planning_backend:=nav2 obstacle_collision_filter:=True diffmaps_provider:=False lts_backup_folder:=/srv/lts_backups localization_backend:=lts_ng twist_limiter:=False odom_provider:=external_odometry use_wheel_odom:=True pkg_nav_config:=$(ros2 pkg prefix --share ipa_navigation_config)
+                return;
+        else
+                echo "Usage: start_nav2 robot"
+                echo "Example start_nav2 raw3-3"
                 return;
         fi
 }

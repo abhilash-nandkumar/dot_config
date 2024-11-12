@@ -48,7 +48,7 @@ local custom_attach = function(client, bufnr)
 end
 
 nvim_lsp.clangd.setup({
-	cmd = { "docker", "exec", "-i" ,"noetic_build", "/bin/sh", "-c", "clangd", "--log=error", "--background-index", "--clang-tidy","-j=4" },
+	cmd = { "docker", "exec", "-i" ,"jazzy_build", "/bin/sh", "-c", "clangd", "--log=error", "--background-index", "--clang-tidy","-j=4" },
 	on_attach = custom_attach,
 	capabilities = capabilities,
 })
