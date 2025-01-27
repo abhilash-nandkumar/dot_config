@@ -173,3 +173,6 @@ filename: '/tmp/lts'
 level: 3
 "
 '
+
+alias node_vpn_connect="sudo openvpn --config /etc/openvpn/config.ovpn"
+alias node_tool_simulate="node-tool --latest simulate --clean --robot-config ros2_robot.yaml --sim-config ros2_sim.yaml --provision"
