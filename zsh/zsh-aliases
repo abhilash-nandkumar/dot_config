@@ -70,7 +70,7 @@ alias ros1rviz='
 sr1_ws
 rviz -d $(rospack find ipa_navigation_config)/config/nav_config.rviz
 '
-alias ros2rviz='sr2 && rviz2 -d ~/git/rviz_config.rviz'
+alias ros2rviz='sr2 && rviz2 -d ${WSDIR}/rviz_config.rviz'
 alias ros2_teleop='sr2_ws && ros2 run key_teleop key_teleop key_vel:=/node_cmd_vel_joy'
 alias weather='curl -4 http://wttr.in/Stuttgart'
 alias ncal3='ncal -3 -w'
@@ -163,13 +163,7 @@ alias cds='is_ros_workspace && cd $ROS_WORKSPACE/src'
 alias cdbuild='is_ros_workspace && cd $ROS_WORKSPACE/build'
 alias cddev='is_ros_workspace && cd $ROS_WORKSPACE/devel/.private'
 
-alias colb='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" build --base-paths "${ROS_WORKSPACE}" --cmake-args -DCMAKE_CXX_FLAGS="-ggdb -fdiagnostics-color=always" -DCATKIN_ENABLE_TESTING=0 --symlink-install --build-base "${ROS_WORKSPACE}/build" --install-base ${ROS_WORKSPACE}/install --mixin release compile-commands ccache --event-handler console_direct+'
-alias colt='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" test --base-paths "${ROS_WORKSPACE}" --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_FLAGS=-ggdb --symlink-install --build-base "${ROS_WORKSPACE}/build" --install-base "${ROS_WORKSPACE}/install" --event-handler console_direct+'
-alias colbthis_test='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" build --cmake-args -DCMAKE_CXX_FLAGS="-ggdb -fdiagnostics-color=always" --symlink-install --build-base "${ROS_WORKSPACE}/build" --install-base "${ROS_WORKSPACE}/install" --mixin release compile-commands ccache --event-handler console_direct+'
-alias colbthis='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" build --cmake-args -DCMAKE_CXX_FLAGS="-ggdb -fdiagnostics-color=always" -DCATKIN_ENABLE_TESTING=0 --symlink-install --build-base "${ROS_WORKSPACE}/build" --install-base "${ROS_WORKSPACE}/install" --mixin release compile-commands ccache --event-handler console_direct+'
-alias coltr='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" test-result --test-result-base "${ROS_WORKSPACE}/build" --verbose'
-alias colrelbuild='is_ros_workspace && colcon --log-base "${ROS_WORKSPACE}/log" build --base-paths "${ROS_WORKSPACE}" --cmake-args -DCMAKE_CXX_FLAGS="-ggdb -fdiagnostics-color=always" --symlink-install --build-base "${ROS_WORKSPACE}/build" --install-base "${ROS_WORKSPACE}/install" --mixin compile-commands ccache --event-handler console_direct+'
-
+alias colb='${WSDIR}/colb/target/release/colb'
 alias jazzy_container='docker exec -it jazzy_build zsh'
 alias noetic_container='docker exec -it noetic_build zsh'
 
