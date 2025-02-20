@@ -1,7 +1,6 @@
-local telescope = require("telescope")
 
 -- local trouble = require("trouble.providers.telescope")
-telescope.setup({
+return {
 	defaults = {
 		-- mappings = {
 		-- 	i = { ["<c-t>"] = trouble.open_with_trouble },
@@ -27,7 +26,4 @@ telescope.setup({
 			-- the default case_mode is "smart_case"
 		},
 	},
-})
-telescope.load_extension("dap")
-telescope.load_extension("fzf")
-telescope.load_extension("ros")
+}

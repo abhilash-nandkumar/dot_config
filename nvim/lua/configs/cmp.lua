@@ -1,11 +1,4 @@
-vim.g.complete = "menu,menuone,noselect,noinsert"
--- vim.opt.shortmess:append "c"
 
--- luasnip setup
-local luasnip = require("luasnip")
-
--- autopairs setup
-require("nvim-autopairs").setup({})
 
 -- lspkind
 -- local ok, lspkind = pcall(require, "lspkind")
@@ -16,8 +9,8 @@ require("nvim-autopairs").setup({})
 -- lspkind.init()
 
 -- nvim-cmp setup
-local cmp = require("cmp")
-cmp.setup({
+local cmp = require "cmp"
+options = {
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)
@@ -55,12 +48,11 @@ cmp.setup({
 	},
 	-- nvim-cmp by defaults disables autocomplete for prompt buffers
 	enabled = function()
-		return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
+		return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
 	end,
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
-		-- { name = "dap" },
 		-- { name = "nvim_lua" },
 		-- { name = "path" },
 		{ name = "buffer", keyword_length = 5 },
@@ -73,4 +65,8 @@ cmp.setup({
 	-- 			path = "[path]",
 	-- 			luasnip = "[snip]",
 	-- 		},
-})
+}
+
+
+
+return optionsy

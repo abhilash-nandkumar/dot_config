@@ -20,7 +20,7 @@ end
 
 
 -- OR setup with some options
-require("nvim-tree").setup({
+return {
   sort = {
     sorter = "case_sensitive",
   },
@@ -35,4 +35,4 @@ require("nvim-tree").setup({
 	custom = { "^.git$" },
   },
   on_attach = my_on_attach,
-})
+}

@@ -3,8 +3,6 @@ HOME = os.getenv("HOME")
 local g = vim.g -- let
 local opt = vim.opt -- set
 local cmd = vim.cmd
--- g.color = "dracula"
-g.mapleader = " "
 opt.clipboard = "unnamedplus"
 opt.mouse = "a"
 opt.tabstop = 4
@@ -29,8 +27,6 @@ opt.wrapscan = true
 opt.splitbelow = true
 opt.splitright = true
 
-g.vscode_style = "dark"
-cmd("colorscheme vscode")
 
 -- open automatically when vim starts up on opening a directory
 cmd("autocmd StdinReadPre * let s:std_in=1")
