@@ -1,4 +1,3 @@
-
 -- local trouble = require("trouble.providers.telescope")
 return {
 	defaults = {

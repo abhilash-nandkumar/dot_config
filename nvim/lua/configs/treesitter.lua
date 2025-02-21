@@ -1,5 +1,5 @@
 return {
-	ensure_installed = { "lua", "luadoc", "printf", "vim", "vimdoc", "python", "cpp", "yaml", "json"},
+	ensure_installed = { "lua", "luadoc", "printf", "vim", "vimdoc", "python", "cpp", "yaml", "json" },
 	highlight = {
 		enable = true,
 		additional_vim_regex_highlighting = false,

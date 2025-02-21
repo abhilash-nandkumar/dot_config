@@ -5,17 +5,16 @@ local map = vim.api.nvim_set_keymap
 
 function nnoremap(shortcut, command, desc)
 	desc = desc or ""
-	map("n", shortcut, command, { noremap = true , desc = desc})
+	map("n", shortcut, command, { noremap = true, desc = desc })
 end
 
 function nmap(shortcut, command, desc)
 	desc = desc or ""
-	map("n", shortcut, command, {desc = desc})
+	map("n", shortcut, command, { desc = desc })
 end
 
 -- source
 nnoremap("<leader>sv", ":source $MYVIMRC<cr>", "Source configs")
-
 
 -- general Navigation
 nnoremap("ü", "{") -- goto previous blank space in vertical direction
@@ -31,6 +30,7 @@ nnoremap("<leader>bf", "<cmd>Telescope buffers<cr>", "Telescope current open buf
 nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>", "Telescope help page")
 nnoremap("<leader>sh", "<cmd>Telescope search_history<cr>", "Telescope find string")
 
+nnoremap("<leader>fm", "<cmd>lua require('conform').format { lsp_fallback = true }<cr>", "Format file")
 
 -- Git
 nnoremap("<leader>gb", "<cmd>Telescope git_branches<cr>", "Git open branch")
@@ -47,7 +47,6 @@ nnoremap("<leader>hl", ":set hlsearch!<CR>", "Toggle search highlighting")
 nnoremap("<leader>ch", "<cmd>WhichKey <CR>", "Cheatsheet")
 nnoremap("<leader>wk", "<cmd>lua vim.cmd('WhichKey ' .. vim.fn.input 'WhichKey: ')<cr>", "Cheatsheet lookup")
 
-
 -- Tagbar
 nmap("<leader>8", ":TagbarToggle<CR>")
 
@@ -55,9 +54,8 @@ nmap("<leader>8", ":TagbarToggle<CR>")
 nmap("<leader>1", ":Startify<CR>", "Go to Homepage")
 
 -- NvimTree
-nnoremap("<leader>5", ": NvimTreeToggle<CR>", "Toggle File Tree" )
-nnoremap("-", "<cmd>Oil<CR>", "Oil parent directory" )
-
+nnoremap("<leader>5", ": NvimTreeToggle<CR>", "Toggle File Tree")
+nnoremap("-", "<cmd>Oil<CR>", "Oil parent directory")
 
 -- moving text
 nnoremap("Y", "y$") -- nnoremap Y y$

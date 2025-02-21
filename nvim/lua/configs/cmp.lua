@@ -1,5 +1,3 @@
-
-
 -- lspkind
 -- local ok, lspkind = pcall(require, "lspkind")
 -- if not ok then
@@ -9,7 +7,7 @@
 -- lspkind.init()
 
 -- nvim-cmp setup
-local cmp = require "cmp"
+local cmp = require("cmp")
 options = {
 	snippet = {
 		expand = function(args)
@@ -66,7 +64,5 @@ options = {
 	-- 			luasnip = "[snip]",
 	-- 		},
 }
-
-
 
 return optionsy
