@@ -30,7 +30,7 @@ nnoremap("<leader>bf", "<cmd>Telescope buffers<cr>", "Telescope current open buf
 nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>", "Telescope help page")
 nnoremap("<leader>sh", "<cmd>Telescope search_history<cr>", "Telescope find string")
 
-nnoremap("<leader>fm", "<cmd>lua require('conform').format { lsp_fallback = true }<cr>", "Format file")
+nnoremap("<leader><leader>f", "<cmd>lua require('conform').format { lsp_fallback = true }<cr>", "Format file")
 
 -- Git
 nnoremap("<leader>gb", "<cmd>Telescope git_branches<cr>", "Git open branch")
