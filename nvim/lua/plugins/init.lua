@@ -1,6 +1,18 @@
 return {
     "nvim-lua/plenary.nvim",
 
+    -- themes
+    { "Everblush/nvim", name = "everblush" },
+    {"tomasiser/vim-code-dark", name="vscode-dark"},
+    {
+      'nvim-lualine/lualine.nvim',
+      dependencies = { 'nvim-tree/nvim-web-devicons' },
+      opts = function()
+        return require "configs.lualine"
+      end,
+    },
+
+
     -- file managing , picker etc
     {
       "nvim-tree/nvim-tree.lua",
@@ -55,12 +67,9 @@ return {
     -- -- formatting!
     {
       "stevearc/conform.nvim",
-      opts = {
-        formatters_by_ft = { lua = { "stylua" } },
-      },
+      -- event = 'BufWritePre', -- uncomment for format on save
+      opts = require "configs.conform",
     },
-  
-    
   
     -- -- lsp stuff
     {
@@ -139,13 +148,7 @@ return {
         require("trouble").setup({})
       end,
     },
-    "voldikss/vim-floaterm",
-    "vim-airline/vim-airline",
-    "vim-airline/vim-airline-themes",
-    -- "mhinz/vim-startify",
-    "airblade/vim-rooter",
     "tpope/vim-commentary",
-    "moll/vim-bbye",
 
     {
       "kevinhwang91/nvim-ufo",
@@ -167,6 +170,8 @@ return {
       end,
     },
 
-    "nvim-lua/popup.nvim",
+    -- "airblade/vim-rooter",
+    -- "moll/vim-bbye",
+    -- "nvim-lua/popup.nvim",
   }
    

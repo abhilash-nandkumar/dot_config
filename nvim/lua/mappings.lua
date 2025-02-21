@@ -1,93 +1,82 @@
 vim.cmd("noremap <C-b> :noh<cr>:call clearmatches()<cr>") -- clear matches Ctrl+b
 
 local map = vim.api.nvim_set_keymap
+-- local map = vim.keymap.set
 
-options = { noremap = true, silent = true }
-
-function nnoremap(shortcut, command)
-	map("n", shortcut, command, { noremap = true })
+function nnoremap(shortcut, command, desc)
+	desc = desc or ""
+	map("n", shortcut, command, { noremap = true , desc = desc})
 end
 
-function nmap(shortcut, command)
-	map("n", shortcut, command, {})
+function nmap(shortcut, command, desc)
+	desc = desc or ""
+	map("n", shortcut, command, {desc = desc})
 end
 
-function imap(shortcut, command)
-	map("i", shortcut, command, {})
-end
+-- source
+nnoremap("<leader>sv", ":source $MYVIMRC<cr>", "Source configs")
 
-function vmap(shortcut, command)
-	map("v", shortcut, command, {})
-end
-
-function cmap(shortcut, command)
-	map("c", shortcut, command, {})
-end
-
-function tmap(shortcut, command)
-	map("t", shortcut, command, {})
-end
 
 -- general Navigation
 nnoremap("ü", "{") -- goto previous blank space in vertical direction
 nnoremap("+", "}") -- goto next blank space in vertical direction
 
 -- Telescope settings
-nnoremap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>") -- nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap("<leader>fs", "<cmd>Telescope live_grep hidden=true<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
-nnoremap("<leader>fd", "<cmd>Telescope grep_string hidden=true<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
-nnoremap("<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
-nnoremap("<leader>rs", "<cmd>Telescope resume<cr>") -- nnoremap <leader>fs <cmd>Telescope live_grep<cr>
-nnoremap("<leader>bf", "<cmd>Telescope buffers<cr>") -- nnoremap  <leader>fb <cmd>Telescope buffers<cr>
-nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>") -- nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap("<leader>sh", "<cmd>Telescope search_history<cr>") -- nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap("<leader>dr", "<cmd>lua require('telescope').extensions.ros.packages{cwd=os.getenv('WSDIR') or '.'}<CR>")
--- nnoremap("<leader>ff", "<cmd>lua require('telescope').extensions.ros.files{}<CR>")
--- nnoremap("<leader>fs", "<cmd>lua require('telescope').extensions.ros.live_grep{}<CR>")
--- nnoremap("<leader>fd", "<cmd>lua require('telescope').extensions.ros.grep_string{}<CR>")
+nnoremap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>", "Telescope find file")
+nnoremap("<leader>fs", "<cmd>Telescope live_grep hidden=true<cr>", "Telescope live grep")
+nnoremap("<leader>fd", "<cmd>Telescope grep_string hidden=true<cr>", "Telescope find string")
+nnoremap("<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Telescope find in current buffer")
+nnoremap("<leader>rs", "<cmd>Telescope resume<cr>", "Telescope resume search")
+nnoremap("<leader>bf", "<cmd>Telescope buffers<cr>", "Telescope current open buffers")
+nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>", "Telescope help page")
+nnoremap("<leader>sh", "<cmd>Telescope search_history<cr>", "Telescope find string")
+
 
 -- Git
-nnoremap("<leader>gb", "<cmd>Telescope git_branches<cr>") -- open list of branches
-nnoremap("<leader>gc", "<cmd>Telescope git_commits<cr>") -- open list of commit
-nnoremap("<leader>gbc", "<cmd>Telescope git_bcommits<cr>") -- nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap("<leader>gb", "<cmd>Telescope git_branches<cr>", "Git open branch")
+nnoremap("<leader>gc", "<cmd>Telescope git_commits<cr>", "Git open commits")
+nnoremap("<leader>gbc", "<cmd>Telescope git_bcommits<cr>", "Git file commits")
 
-nnoremap("<leader>gs", ":vertical G<cr>") -- Show git status
-nnoremap("<leader>gf", ":diffget //2 <CR>") -- select left during merge conflicts
-nnoremap("<leader>gh", ":diffget //3 <CR>") -- select right during merge conflicts
+nnoremap("<leader>gs", ":vertical G<cr>", "Git show status")
+nnoremap("<leader>gf", ":diffget //2 <CR>", "Git merge select left")
+nnoremap("<leader>gh", ":diffget //3 <CR>", "Git merge select right")
 
 -- search
 nnoremap("´", "*") -- goto next search result with + and previous with #
-nnoremap("<leader>hl", ":set hlsearch!<CR>") -- toggle highlight search
+nnoremap("<leader>hl", ":set hlsearch!<CR>", "Toggle search highlighting")
+nnoremap("<leader>ch", "<cmd>WhichKey <CR>", "Cheatsheet")
+nnoremap("<leader>wk", "<cmd>lua vim.cmd('WhichKey ' .. vim.fn.input 'WhichKey: ')<cr>", "Cheatsheet lookup")
+
 
 -- Tagbar
-nmap("<leader>8", ":TagbarToggle<CR>") -- nmap <leader>8 :TagbarToggle<CR>
+nmap("<leader>8", ":TagbarToggle<CR>")
 
 -- Startify Home Page
-nmap("<leader>1", ":Startify<CR>")
+nmap("<leader>1", ":Startify<CR>", "Go to Homepage")
 
 -- NvimTree
-map("", "<leader>5", ": NvimTreeFindFile<CR>",{ silent = true } )
-map("", "-", ": Oil<CR>", { silent = true , desc = "Open parent directory" })
+nnoremap("<leader>5", ": NvimTreeToggle<CR>", "Toggle File Tree" )
+nnoremap("-", "<cmd>Oil<CR>", "Oil parent directory" )
 
 
 -- moving text
 nnoremap("Y", "y$") -- nnoremap Y y$
-nnoremap("<leader>j", ":m .+1<CR>==") -- nnoremap <leader>j :m .+1<CR>==
-nnoremap("<leader>k", ":m .-2<CR>==") -- nnoremap <leader>k :m .-2<CR>==
+nnoremap("<leader>j", ":m .+1<CR>==")
+nnoremap("<leader>k", ":m .-2<CR>==")
 
 -- Split Navigation
-nnoremap("<C-j>", "<C-W><C-J>") -- nnoremap <C-J> <C-W><C-J>
-nnoremap("<C-k>", "<C-W><C-K>") -- nnoremap <C-K> <C-W><C-K>
-nnoremap("<C-l>", "<C-W><C-L>") -- nnoremap <C-L> <C-W><C-L>
-nnoremap("<C-h>", "<C-W><C-H>") -- nnoremap <C-H> <C-W><C-H>
+nnoremap("<C-j>", "<C-W><C-J>", "Window down [v]")
+nnoremap("<C-k>", "<C-W><C-K>", "Window up [^]")
+nnoremap("<C-l>", "<C-W><C-L>", "Window right [>]")
+nnoremap("<C-h>", "<C-W><C-H>", "Window left [<]")
 
-nnoremap("<A-v>", ":vsplit<CR>")
-nnoremap("<A-b>", ":split<CR>")
+nnoremap("<A-v>", ":vsplit<CR>", "Split open vertical")
+nnoremap("<A-b>", ":split<CR>", "Split open horizontal")
 
 -- Go to tab by number
-nnoremap("<Tab>", ":bnext<CR>")
-nnoremap("<S-Tab>", ":bprev<CR>")
-nnoremap("4", ":bd<CR>")
+nnoremap("<Tab>", ":bnext<CR>", "Buffer next")
+nnoremap("<S-Tab>", ":bprev<CR>", "Buffer prev")
+nnoremap("4", ":bd<CR>", "Buffer close")
 
 -- floaterm
 vim.g.floaterm_keymap_toggle = "<leader>t"
@@ -106,8 +95,8 @@ nnoremap("<leader>q", ":wq<CR>")
 nnoremap("<leader>w", ":w<CR>")
 
 -- nvim-ufo for Folding
-nnoremap("zR", "<cmd>lua require('ufo').openAllFolds()<CR>")
-nnoremap("zM", "<cmd>lua require('ufo').closeAllFolds()<CR>")
+nnoremap("zR", "<cmd>lua require('ufo').openAllFolds()<CR>", "Fold open")
+nnoremap("zM", "<cmd>lua require('ufo').closeAllFolds()<CR>", "Fold close")
 nnoremap("zr", "<cmd>lua require('ufo').openFoldsExceptKinds()<CR>")
 nnoremap("zm", "<cmd>lua require('ufo').closeFoldsWith()<CR>") -- closeAllFolds == closeFoldsWith(0)
 vim.keymap.set("n", "K", function()

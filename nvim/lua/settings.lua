@@ -27,25 +27,11 @@ opt.wrapscan = true
 opt.splitbelow = true
 opt.splitright = true
 
+-- set theme
+cmd('colorscheme codedark')
 
 -- open automatically when vim starts up on opening a directory
 cmd("autocmd StdinReadPre * let s:std_in=1")
-
--- Airline
-g["airline#extensions#tabline#enabled"] = 1
-g["airline#extensions#tabline#left_sep"] = ""
-g["airline#extensions#tabline#left_alt_sep"] = ""
-g["airline#extensions#tabline#right_sep"] = ""
-g["airline#extensions#tabline#right_alt_sep"] = ""
-g["airline#extensions#tabline#fnamemod"] = ":t"
-g.airline_powerline_fonts = true
--- g.airline_left_sep = " ❤  "
--- g.airline_right_sep = " 🟆 "
-g.airline_section_y = ""
-g.airline_section_x = ""
-g.laststatus = 2
-opt.showtabline = 2
-opt.showmode = false
 
 -- nvim-ufo
 -- opt.foldlevelstart = -1
