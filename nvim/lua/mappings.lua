@@ -89,18 +89,6 @@ map("v", "R", ":s//<Left>", { noremap = true })
 nnoremap("<leader>q", ":wq<CR>")
 nnoremap("<leader>w", ":w<CR>")
 
--- nvim-ufo for Folding
-nnoremap("zR", "<cmd>lua require('ufo').openAllFolds()<CR>", "Fold open")
-nnoremap("zM", "<cmd>lua require('ufo').closeAllFolds()<CR>", "Fold close")
-nnoremap("zr", "<cmd>lua require('ufo').openFoldsExceptKinds()<CR>")
-nnoremap("zm", "<cmd>lua require('ufo').closeFoldsWith()<CR>") -- closeAllFolds == closeFoldsWith(0)
-vim.keymap.set("n", "K", function()
-	local winid = require("ufo").peekFoldedLinesUnderCursor()
-	if not winid then
-		vim.lsp.buf.hover()
-	end
-end)
-
 -- trouble.nvim
 nnoremap("<leader>xx", "<cmd>Trouble<cr>", "Trouble")
 nnoremap("<leader>xd", "<cmd>Trouble diagnostics<cr>", "Diagnostics")

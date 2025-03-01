@@ -154,14 +154,6 @@ return {
 	},
 	"tpope/vim-commentary",
 
-	-- {
-	-- 	"kevinhwang91/nvim-ufo",
-	-- 	dependencies = "kevinhwang91/promise-async",
-	-- 	opts = function()
-	-- 		return require("configs.ufo")
-	-- 	end,
-	-- },
-
 	-- Git
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
