@@ -30,7 +30,7 @@ nnoremap("<leader>bf", "<cmd>Telescope buffers<cr>", "Telescope current open buf
 nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>", "Telescope help page")
 nnoremap("<leader>sh", "<cmd>Telescope search_history<cr>", "Telescope find string")
 
-nnoremap("<leader><leader>f", "<cmd>lua require('conform').format { lsp_fallback = true }<cr>", "Format file")
+nnoremap("<leader>f", "<cmd>lua require('conform').format { lsp_fallback = true }<cr>", "Format file")
 
 -- Git
 nnoremap("<leader>gb", "<cmd>Telescope git_branches<cr>", "Git open branch")
@@ -49,9 +49,6 @@ nnoremap("<leader>wk", "<cmd>lua vim.cmd('WhichKey ' .. vim.fn.input 'WhichKey: 
 
 -- Tagbar
 nmap("<leader>8", ":TagbarToggle<CR>")
-
--- Startify Home Page
-nmap("<leader>1", ":Startify<CR>", "Go to Homepage")
 
 -- NvimTree
 nnoremap("<leader>5", ": NvimTreeToggle<CR>", "Toggle File Tree")
@@ -85,8 +82,8 @@ map("", "gS", "<Plug>Sneak_", { silent = true })
 map("", "gs", "<Plug>Sneak_", { silent = true })
 
 -- Replace string
-map("n", "S", ":%s///gI<Left><Left><Left><Left>", { noremap = true })
-map("v", "S", ":s//<Left>", { noremap = true })
+map("n", "R", ":%s///gI<Left><Left><Left><Left>", { noremap = true })
+map("v", "R", ":s//<Left>", { noremap = true })
 
 -- Alias write and quit to Q
 nnoremap("<leader>q", ":wq<CR>")
@@ -105,8 +102,24 @@ vim.keymap.set("n", "K", function()
 end)
 
 -- trouble.nvim
-nnoremap("<leader>xx", "<cmd>Trouble<cr>")
-nnoremap("<leader>xd", "<cmd>Trouble diagnostics<cr>")
-nnoremap("<leader>xl", "<cmd>Trouble loclist<cr>")
-nnoremap("<leader>xq", "<cmd>Trouble quickfix<cr>")
-nnoremap("R", "<cmd>Trouble lsp_references<cr>")
+nnoremap("<leader>xx", "<cmd>Trouble<cr>", "Trouble")
+nnoremap("<leader>xd", "<cmd>Trouble diagnostics<cr>", "Diagnostics")
+nnoremap("<leader>xl", "<cmd>Trouble loclist<cr>", "Loclist")
+nnoremap("<leader>xq", "<cmd>Trouble quickfix<cr>", "Quickfix list")
+-- nnoremap("R", "<cmd>Trouble lsp_references<cr>")
+
+-- LSP
+nnoremap("<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", "LSP Go to declaration")
+nnoremap("<leader>gd", "<cmd>lua vim.lsp.buf.definition()<cr>", "LSP Go to definition")
+nnoremap("<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", "LSP Go to implementation")
+nnoremap("<leader>h", "<cmd>lua vim.lsp.buf.hover()<cr>", "LSP Hover")
+nnoremap("<leader>fx", "<cmd>lua vim.lsp.buf.code_action()<cr>", "LSP Code action")
+nnoremap("<leader>cr", "<cmd>lua vim.lsp.buf.rename()<cr>", "LSP Rename")
+
+--   map("n", "<leader>wl", function()
+--     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+--   end, opts "List workspace folders")
+
+--   map("n", "<leader>D", vim.lsp.buf.type_definition, opts "Go to type definition")
+
+--   map("n", "gr", vim.lsp.buf.references, opts "Show references")

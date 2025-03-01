@@ -56,10 +56,19 @@ return {
 
 	{
 		"folke/which-key.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"echasnovski/mini.icons",
+			config = function()
+				require("mini.icons").setup({})
+			end,
+		},
 		keys = { "<leader>", "<c-w>", '"', "'", "`", "c", "v", "g" },
 		cmd = "WhichKey",
 		opts = function()
-			return {}
+			return {
+				delay = 100,
+			}
 		end,
 	},
 
@@ -70,20 +79,31 @@ return {
 		opts = require("configs.conform"),
 	},
 
-	-- -- lsp stuff
 	{
-		"williamboman/mason.nvim",
-		cmd = { "Mason", "MasonInstall", "MasonUpdate" },
-		opts = function()
-			return require("configs.mason")
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({})
 		end,
 	},
 
+	-- -- lsp stuff
+	-- {
+	-- 	"williamboman/mason.nvim",
+	-- 	cmd = { "Mason", "MasonInstall", "MasonUpdate" },
+	-- 	opts = function()
+	-- 		return {}
+	-- 	end,
+	-- },
+
 	{
 		"neovim/nvim-lspconfig",
-		event = "User FilePost",
+		dependencies = {
+			"hrsh7th/nvim-cmp",
+		},
 		config = function()
-			require("configs.lspconfig").defaults()
+			return require("configs.lsp")
 		end,
 	},
 
@@ -132,6 +152,7 @@ return {
 			return require("configs.cmp")
 		end,
 	},
+	"nvim-lua/lsp-status.nvim",
 
 	{
 		"folke/todo-comments.nvim",
@@ -149,13 +170,13 @@ return {
 	},
 	"tpope/vim-commentary",
 
-	{
-		"kevinhwang91/nvim-ufo",
-		dependencies = "kevinhwang91/promise-async",
-		opts = function()
-			return require("configs.ufo")
-		end,
-	},
+	-- {
+	-- 	"kevinhwang91/nvim-ufo",
+	-- 	dependencies = "kevinhwang91/promise-async",
+	-- 	opts = function()
+	-- 		return require("configs.ufo")
+	-- 	end,
+	-- },
 
 	-- Git
 	"tpope/vim-fugitive",
@@ -176,9 +197,7 @@ return {
 		"zaldih/themery.nvim",
 		lazy = false,
 		config = function()
-			require("themery").setup({
-				-- add the config here
-			})
+			require("themery").setup({})
 		end,
 	},
 }
