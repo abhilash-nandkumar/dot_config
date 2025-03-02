@@ -8,8 +8,12 @@ return {
 		config = function()
 			require("everblush").setup({
 				override = {
-					TelescopeSelection = { fg = "#b3b9b8" , bold = true},
+					TelescopeSelection = { fg = "#b3b9b8", bold = true },
 					["@comment"] = { fg = "#535a5c", italic = true },
+					DiffAdd = { bg = "#4B5632" },
+					DiffChange = { bg = "#595959" },
+					DiffDelete = { bg = "#6F1313" },
+					DiffText = { bg = "#04395E" },
 				},
 			})
 		end,
