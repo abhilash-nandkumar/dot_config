@@ -2,13 +2,33 @@ return {
 	"nvim-lua/plenary.nvim",
 
 	-- themes
-	{ "Everblush/nvim", name = "everblush" },
+	{
+		"Everblush/nvim",
+		name = "everblush",
+		config = function()
+			require("everblush").setup({
+				override = {
+					TelescopeSelection = { fg = "#b3b9b8" , bold = true},
+					["@comment"] = { fg = "#535a5c", italic = true },
+				},
+			})
+		end,
+	},
 	{ "tomasiser/vim-code-dark", name = "vscode-dark" },
+	{ "embark-theme/vim", name = "embark" },
+	{ "morhetz/gruvbox", name = "gruvbox" },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = function()
 			return require("configs.lualine")
+		end,
+	},
+	{
+		"zaldih/themery.nvim",
+		lazy = false,
+		config = function()
+			return require("configs.themes")
 		end,
 	},
 
@@ -89,14 +109,6 @@ return {
 	},
 
 	-- -- lsp stuff
-	-- {
-	-- 	"williamboman/mason.nvim",
-	-- 	cmd = { "Mason", "MasonInstall", "MasonUpdate" },
-	-- 	opts = function()
-	-- 		return {}
-	-- 	end,
-	-- },
-
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -170,10 +182,17 @@ return {
 	-- "moll/vim-bbye",
 	-- "nvim-lua/popup.nvim",
 	{
-		"zaldih/themery.nvim",
-		lazy = false,
-		config = function()
-			require("themery").setup({})
+		"kawre/leetcode.nvim",
+		build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+			"ibhagwan/fzf-lua",
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+			"tree-sitter/tree-sitter-html",
+		},
+		opts = function()
+			return require("configs.leetcode")
 		end,
 	},
 }

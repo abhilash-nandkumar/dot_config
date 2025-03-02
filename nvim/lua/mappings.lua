@@ -16,6 +16,8 @@ end
 -- source
 nnoremap("<leader>sv", ":source $MYVIMRC<cr>", "Source configs")
 
+nnoremap("<leader>th", "<cmd>Themery<cr>", "Theme")
+
 -- general Navigation
 nnoremap("ü", "{") -- goto previous blank space in vertical direction
 nnoremap("+", "}") -- goto next blank space in vertical direction
@@ -72,14 +74,6 @@ nnoremap("<A-b>", ":split<CR>", "Split open horizontal")
 nnoremap("<Tab>", ":bnext<CR>", "Buffer next")
 nnoremap("<S-Tab>", ":bprev<CR>", "Buffer prev")
 nnoremap("4", ":bd<CR>", "Buffer close")
-
--- floaterm
-vim.g.floaterm_keymap_toggle = "<leader>t"
-vim.g.floaterm_keymap_new = "<leader>ft"
-
--- vim-sneak
-map("", "gS", "<Plug>Sneak_", { silent = true })
-map("", "gs", "<Plug>Sneak_", { silent = true })
 
 -- Replace string
 map("n", "R", ":%s///gI<Left><Left><Left><Left>", { noremap = true })

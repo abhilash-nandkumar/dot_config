@@ -28,7 +28,7 @@ opt.splitbelow = true
 opt.splitright = true
 
 -- set theme
-cmd("colorscheme codedark")
+cmd("colorscheme everblush")
 
 -- open automatically when vim starts up on opening a directory
 cmd("autocmd StdinReadPre * let s:std_in=1")
