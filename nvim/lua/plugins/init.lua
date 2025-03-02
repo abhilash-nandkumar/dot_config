@@ -13,7 +13,7 @@ return {
 					DiffAdd = { bg = "#4B5632" },
 					DiffChange = { bg = "#595959" },
 					DiffDelete = { bg = "#6F1313" },
-					DiffText = { bg = "#04395E" },
+					DiffText = { fg = "#4FC1FF", bg = "#04395E", bold = true },
 				},
 			})
 		end,
