@@ -47,7 +47,7 @@ nnoremap("<leader>gh", ":diffget //3 <CR>", "Git merge select right")
 nnoremap("´", "*") -- goto next search result with + and previous with #
 nnoremap("<leader>hl", ":set hlsearch!<CR>", "Toggle search highlighting")
 nnoremap("<leader>ch", "<cmd>WhichKey <CR>", "Cheatsheet")
-nnoremap("<leader>wk", "<cmd>lua vim.cmd('WhichKey ' .. vim.fn.input 'WhichKey: ')<cr>", "Cheatsheet lookup")
+nnoremap("<leader>?", "<cmd>lua vim.cmd('WhichKey ' .. vim.fn.input 'WhichKey: ')<cr>", "Cheatsheet lookup")
 
 -- Tagbar
 nmap("<leader>8", ":TagbarToggle<CR>")

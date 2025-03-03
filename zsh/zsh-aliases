@@ -2,13 +2,13 @@
 # alias j='z'
 # alias f='zi'
 alias g='lazygit'
-alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
+alias zsh-update-plugins="find '$ZDOTDIR/plugins' -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 alias config_rc='vim $CONFIGDIR'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls -A --color=auto'
+    alias ls='ls -AGp --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 	alias diff='diff --color=auto'
@@ -27,7 +27,7 @@ alias gdb_break='gdb -ex "break main" -ex run'
 alias v='nvim'
 
 # grep
-alias -g gp='| grep -i'
+# alias -g gp='| grep -i'
 
 # easier to read disk
 alias df='df -h'     # human-readable sizes
@@ -83,6 +83,7 @@ docker rm $(docker ps -aq)
 
 # git
 alias gc="git commit"
+alias gb="git branch | fzf | xargs -n 1 git checkout"
 alias gs="git status"
 alias gd="git difftool --dir-diff"
 alias gf="git fetch"
@@ -98,7 +99,8 @@ alias gA="git add -A"
 alias gri="git rebase -i"
 alias grc="git rebase --continue"
 alias gra="git rebase --abort"
-
+alias glp='git log --pretty=format:"%C(yellow)%h%Creset - %C(green)%an%Creset, %ar : %s"'
+alias glt='git log --graph --oneline --all --decorate'
 
 function rsource_ros2_base {
   local ROS_ROOT
