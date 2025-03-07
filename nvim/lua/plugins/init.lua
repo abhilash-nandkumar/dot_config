@@ -27,9 +27,10 @@ return {
 		priority = 1000,
 	},
 	{
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		opts = {},
+		"echasnovski/mini.indentscope",
+		config = function()
+			require("mini.indentscope").setup()
+		end,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
