@@ -1,7 +1,7 @@
 return {
 	"nvim-lua/plenary.nvim",
 
-	-- themes
+	-- themes, visual
 	{
 		"Everblush/nvim",
 		name = "everblush",
@@ -25,6 +25,11 @@ return {
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
+	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {},
 	},
 	{
 		"nvim-lualine/lualine.nvim",
