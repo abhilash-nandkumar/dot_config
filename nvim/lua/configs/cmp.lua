@@ -47,10 +47,7 @@ local options = {
 		{ name = "nvim_lua" },
 		-- { name = "path" },
 		{ name = "buffer", keyword_length = 5 },
-		-- { name = "cmdline" },
 	},
 }
-
--- return vim.tbl_deep_extend("force", options, require("cmp").opts)
 
 return options

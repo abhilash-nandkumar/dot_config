@@ -22,6 +22,11 @@ return {
 	{ "embark-theme/vim", name = "embark" },
 	{ "morhetz/gruvbox", name = "gruvbox" },
 	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+	},
+	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = function()
@@ -116,40 +121,26 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			"hrsh7th/nvim-cmp",
+			"saghen/blink.cmp",
 		},
 		config = function()
 			return require("configs.lsp")
 		end,
 	},
 
-	-- -- load luasnips + cmp related in insert mode only
 	{
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
+		"saghen/blink.cmp",
 		dependencies = {
-			-- cmp sources plugins
-			{
-				"saadparwaiz1/cmp_luasnip",
-				"hrsh7th/cmp-nvim-lua",
-				"hrsh7th/cmp-nvim-lsp",
-				"hrsh7th/cmp-buffer",
-				"hrsh7th/cmp-path",
-				"hrsh7th/cmp-cmdline",
-			},
-			{
-				-- snippet plugin
-				"L3MON4D3/LuaSnip",
-				dependencies = "rafamadriz/friendly-snippets",
-				opts = { history = true, updateevents = "TextChanged,TextChangedI" },
-				config = function(_, opts)
-					require("luasnip").config.set_config(opts)
-					require("configs.luasnip")
-				end,
-			},
+			"rafamadriz/friendly-snippets",
+			"onsails/lspkind.nvim",
+			"kyazdani42/nvim-web-devicons",
+			{ "L3MON4D3/LuaSnip", version = "v2.*" },
 		},
+
+		-- use a release tag to download pre-built binaries
+		version = "*",
 		opts = function()
-			return require("configs.cmp")
+			return require("configs.completion")
 		end,
 	},
 	"nvim-lua/lsp-status.nvim",
@@ -167,6 +158,9 @@ return {
 		config = function()
 			require("trouble").setup({})
 		end,
+		-- opts = function()
+		-- 	return require("configs.trouble")
+		-- end,
 	},
 	"tpope/vim-commentary",
 
@@ -181,7 +175,6 @@ return {
 			return require("configs.gitsigns")
 		end,
 	},
-
 	-- "airblade/vim-rooter",
 	-- "moll/vim-bbye",
 	-- "nvim-lua/popup.nvim",

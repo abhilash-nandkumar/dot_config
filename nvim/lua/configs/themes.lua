@@ -1,5 +1,6 @@
 return require("themery").setup({
 	themes = {
+		"catppuccin",
 		"codedark",
 		"darkblue",
 		"default",

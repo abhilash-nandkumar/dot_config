@@ -4,8 +4,8 @@ local map = vim.api.nvim_set_keymap
 -- local map = vim.keymap.set
 
 function nnoremap(shortcut, command, desc)
-	desc = desc or ""
-	map("n", shortcut, command, { noremap = true, desc = desc })
+desc = desc or ""
+map("n", shortcut, command, { noremap = true, desc = desc })
 end
 
 function nmap(shortcut, command, desc)
@@ -23,14 +23,14 @@ nnoremap("ü", "{") -- goto previous blank space in vertical direction
 nnoremap("+", "}") -- goto next blank space in vertical direction
 
 -- Telescope settings
-nnoremap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>", "Telescope find file")
-nnoremap("<leader>fs", "<cmd>Telescope live_grep hidden=true<cr>", "Telescope live grep")
-nnoremap("<leader>fd", "<cmd>Telescope grep_string hidden=true<cr>", "Telescope find string")
-nnoremap("<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Telescope find in current buffer")
-nnoremap("<leader>rs", "<cmd>Telescope resume<cr>", "Telescope resume search")
-nnoremap("<leader>bf", "<cmd>Telescope buffers<cr>", "Telescope current open buffers")
-nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>", "Telescope help page")
-nnoremap("<leader>sh", "<cmd>Telescope search_history<cr>", "Telescope find string")
+-- nnoremap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>", "Telescope find file")
+-- nnoremap("<leader>fs", "<cmd>Telescope live_grep hidden=true {vimgrep_arguments='--fixed-strings'} <cr>", "Telescope live grep")
+-- nnoremap("<leader>fd", "<cmd>lua require('telescope.builtin').grep_string{ shorten_path = true, word_match = '-w', only_sort_text = true, search = '' }<cr>", "Telescope find string")
+-- nnoremap("<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Telescope find in current buffer")
+-- nnoremap("<leader>rs", "<cmd>Telescope resume<cr>", "Telescope resume search")
+-- nnoremap("<leader>bf", "<cmd>Telescope buffers<cr>", "Telescope current open buffers")
+-- nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>", "Telescope help page")
+-- nnoremap("<leader>sh", "<cmd>Telescope search_history<cr>", "Telescope find string")
 
 nnoremap("<leader>f", "<cmd>lua require('conform').format { lsp_fallback = true }<cr>", "Format file")
 
@@ -88,7 +88,7 @@ nnoremap("<leader>xx", "<cmd>Trouble<cr>", "Trouble")
 nnoremap("<leader>xd", "<cmd>Trouble diagnostics<cr>", "Diagnostics")
 nnoremap("<leader>xl", "<cmd>Trouble loclist<cr>", "Loclist")
 nnoremap("<leader>xq", "<cmd>Trouble quickfix<cr>", "Quickfix list")
--- nnoremap("R", "<cmd>Trouble lsp_references<cr>")
+nnoremap("<leader>xr", "<cmd>Trouble lsp_references<cr>")
 
 -- LSP
 nnoremap("<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", "LSP Go to declaration")
