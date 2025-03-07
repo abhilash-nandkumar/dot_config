@@ -7,7 +7,6 @@ return require("themery").setup({
 		"desert",
 		"embark",
 		"evening",
-		"everblush",
 		"gruvbox",
 		"habamax",
 		"koehler",

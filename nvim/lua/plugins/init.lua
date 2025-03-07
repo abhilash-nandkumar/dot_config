@@ -2,22 +2,6 @@ return {
 	"nvim-lua/plenary.nvim",
 
 	-- themes, visual
-	{
-		"Everblush/nvim",
-		name = "everblush",
-		config = function()
-			require("everblush").setup({
-				override = {
-					TelescopeSelection = { fg = "#b3b9b8", bold = true },
-					["@comment"] = { fg = "#535a5c", italic = true },
-					DiffAdd = { bg = "#4B5632" },
-					DiffChange = { bg = "#595959" },
-					DiffDelete = { bg = "#6F1313" },
-					DiffText = { fg = "#4FC1FF", bg = "#04395E", bold = true },
-				},
-			})
-		end,
-	},
 	{ "tomasiser/vim-code-dark", name = "vscode-dark" },
 	{ "embark-theme/vim", name = "embark" },
 	{ "morhetz/gruvbox", name = "gruvbox" },
@@ -37,6 +21,13 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = function()
 			return require("configs.lualine")
+		end,
+	},
+	{
+		"folke/snacks.nvim",
+		lazy = false,
+		opts = function()
+			return require("configs.snacks")
 		end,
 	},
 	{
@@ -177,7 +168,7 @@ return {
 
 	-- Git
 	"tpope/vim-fugitive",
-	"tpope/vim-rhubarb",
+	-- "tpope/vim-rhubarb",
 	"lewis6991/gitsigns.nvim",
 	{
 		"lewis6991/gitsigns.nvim",
