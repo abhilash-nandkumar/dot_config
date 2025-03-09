@@ -4,8 +4,8 @@ local map = vim.api.nvim_set_keymap
 -- local map = vim.keymap.set
 
 function nnoremap(shortcut, command, desc)
-desc = desc or ""
-map("n", shortcut, command, { noremap = true, desc = desc })
+	desc = desc or ""
+	map("n", shortcut, command, { noremap = true, desc = desc })
 end
 
 function nmap(shortcut, command, desc)
@@ -19,18 +19,8 @@ nnoremap("<leader>sv", ":source $MYVIMRC<cr>", "Source configs")
 nnoremap("<leader>th", "<cmd>Themery<cr>", "Theme")
 
 -- general Navigation
-nnoremap("ü", "{") -- goto previous blank space in vertical direction
-nnoremap("+", "}") -- goto next blank space in vertical direction
-
--- Telescope settings
--- nnoremap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>", "Telescope find file")
--- nnoremap("<leader>fs", "<cmd>Telescope live_grep hidden=true {vimgrep_arguments='--fixed-strings'} <cr>", "Telescope live grep")
--- nnoremap("<leader>fd", "<cmd>lua require('telescope.builtin').grep_string{ shorten_path = true, word_match = '-w', only_sort_text = true, search = '' }<cr>", "Telescope find string")
--- nnoremap("<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Telescope find in current buffer")
--- nnoremap("<leader>rs", "<cmd>Telescope resume<cr>", "Telescope resume search")
--- nnoremap("<leader>bf", "<cmd>Telescope buffers<cr>", "Telescope current open buffers")
--- nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>", "Telescope help page")
--- nnoremap("<leader>sh", "<cmd>Telescope search_history<cr>", "Telescope find string")
+nnoremap("ü", "{", "GoTo prev blank space") -- goto previous blank space in vertical direction
+nnoremap("+", "}", "GoTo next blank space") -- goto next blank space in vertical direction
 
 nnoremap("<leader>f", "<cmd>lua require('conform').format { lsp_fallback = true }<cr>", "Format file")
 
@@ -44,22 +34,19 @@ nnoremap("<leader>gf", ":diffget //2 <CR>", "Git merge select left")
 nnoremap("<leader>gh", ":diffget //3 <CR>", "Git merge select right")
 
 -- search
-nnoremap("´", "*") -- goto next search result with + and previous with #
+-- nnoremap("´", "*") -- goto next search result with + and previous with #
 nnoremap("<leader>hl", ":set hlsearch!<CR>", "Toggle search highlighting")
 nnoremap("<leader>ch", "<cmd>WhichKey <CR>", "Cheatsheet")
 nnoremap("<leader>?", "<cmd>lua vim.cmd('WhichKey ' .. vim.fn.input 'WhichKey: ')<cr>", "Cheatsheet lookup")
 
--- Tagbar
-nmap("<leader>8", ":TagbarToggle<CR>")
-
--- NvimTree
+-- nvimTree
 nnoremap("<leader>5", ": NvimTreeToggle<CR>", "Toggle File Tree")
 nnoremap("-", "<cmd>Oil<CR>", "Oil parent directory")
 
 -- moving text
 nnoremap("Y", "y$") -- nnoremap Y y$
-nnoremap("<leader>j", ":m .+1<CR>==")
-nnoremap("<leader>k", ":m .-2<CR>==")
+nnoremap("<leader>k", ":m .-2<CR>==", "Move line up")
+nnoremap("<leader>j", ":m .+1<CR>==", "Move line down")
 
 -- Split Navigation
 nnoremap("<C-j>", "<C-W><C-J>", "Window down [v]")
@@ -76,19 +63,19 @@ nnoremap("<S-Tab>", ":bprev<CR>", "Buffer prev")
 nnoremap("4", ":bd<CR>", "Buffer close")
 
 -- Replace string
-map("n", "R", ":%s///gI<Left><Left><Left><Left>", { noremap = true })
-map("v", "R", ":s//<Left>", { noremap = true })
+map("n", "R", ":%s///gcI<Left><Left><Left><Left>", { noremap = true })
+map("v", "R", ":s//gc<Left>", { noremap = true })
 
 -- Alias write and quit to Q
-nnoremap("<leader>q", ":wq<CR>")
-nnoremap("<leader>w", ":w<CR>")
+nnoremap("<leader>q", ":wq<CR>", "Write buffer and quit")
+nnoremap("<leader>w", ":w<CR>", "Write buffer")
 
 -- trouble.nvim
 nnoremap("<leader>xx", "<cmd>Trouble<cr>", "Trouble")
 nnoremap("<leader>xd", "<cmd>Trouble diagnostics<cr>", "Diagnostics")
 nnoremap("<leader>xl", "<cmd>Trouble loclist<cr>", "Loclist")
 nnoremap("<leader>xq", "<cmd>Trouble quickfix<cr>", "Quickfix list")
-nnoremap("<leader>xr", "<cmd>Trouble lsp_references<cr>")
+nnoremap("<leader>xr", "<cmd>Trouble lsp_references<cr>", "References")
 
 -- LSP
 nnoremap("<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", "LSP Go to declaration")
