@@ -1,5 +1,11 @@
+local map = vim.keymap.set
+
+function nnoremap(shortcut, command, desc)
+	desc = desc or ""
+	map("n", shortcut, command, { noremap = true, desc = desc })
+end
+
 return {
-	dim = { enabled = true },
 	dashboard = {
 		sections = {
 			{ section = "header" },
@@ -37,6 +43,34 @@ return {
 			{ section = "startup" },
 		},
 	},
+	dim = { enabled = true },
+	picker = { enabled = true },
 	notifier = { enabled = true },
-	-- gitbrowse = { enabled = true },
+	toggle = {
+		which_key = true, -- integrate with which-key to show enabled/disabled icons and colors
+		notify = true, -- show a notification when toggling
+		-- icons for enabled/disabled states
+		icon = {
+			enabled = " ",
+			disabled = " ",
+		},
+		-- colors for enabled/disabled states
+		color = {
+			enabled = "green",
+			disabled = "yellow",
+		},
+		wk_desc = {
+			enabled = "Disable ",
+			disabled = "Enable ",
+		},
+	},
+	gitbrowse = { enabled = true },
+
+	-- keymaps
+	nnoremap("<leader>tg", function()
+		Snacks.dim.enable()
+	end, "Dim enable"),
+	nnoremap("<leader>tG", function()
+		Snacks.dim.disable()
+	end, "Dim disable"),
 }
