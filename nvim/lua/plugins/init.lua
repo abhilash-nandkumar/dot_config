@@ -194,4 +194,11 @@ return {
 			return require("configs.leetcode")
 		end,
 	},
+	{
+		"rmagatti/auto-session",
+		lazy = false,
+		opts = {
+			suppressed_dirs = { "~/", "~/Downloads", "/" },
+		},
+	},
 }
