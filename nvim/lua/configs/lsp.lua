@@ -74,4 +74,6 @@ M.lua_ls.setup({
 	},
 })
 
+-- turn off lsp logging
+vim.lsp.set_log_level("off")
 return M
