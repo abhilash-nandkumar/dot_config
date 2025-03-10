@@ -48,6 +48,9 @@ nnoremap("Y", "y$") -- nnoremap Y y$
 nnoremap("<leader>k", ":m .-2<CR>==", "Move line up")
 nnoremap("<leader>j", ":m .+1<CR>==", "Move line down")
 
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+
 -- Split Navigation
 nnoremap("<C-j>", "<C-W><C-J>", "Window down [v]")
 nnoremap("<C-k>", "<C-W><C-K>", "Window up [^]")

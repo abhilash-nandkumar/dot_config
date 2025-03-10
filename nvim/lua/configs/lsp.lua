@@ -18,7 +18,7 @@ end
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { "bashls", "cmake", "pyright" }
+local servers = { "bashls", "cmake", "pyright" , "rust_analyzer"}
 for _, lsp in ipairs(servers) do
 	M[lsp].setup({
 		capabilities = capabilities,

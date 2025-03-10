@@ -1,6 +1,6 @@
 HOME = os.getenv("HOME")
 
-local g = vim.g -- let
+
 local opt = vim.opt -- set
 local cmd = vim.cmd
 opt.clipboard = "unnamedplus"

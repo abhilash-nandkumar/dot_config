@@ -4,6 +4,7 @@ local options = {
 		json = { "prettier" },
 		python = { "ruff" },
 		cpp = { "clang-format" },
+		rust = { "rust-fmt" },
 	},
 
 	-- format_on_save = {
