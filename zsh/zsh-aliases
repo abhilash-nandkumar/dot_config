@@ -26,6 +26,8 @@ alias gdb='gdb -q'
 alias gdb_break='gdb -ex "break main" -ex run'
 alias v='nvim'
 
+alias xterm="xterm -bg black -fg white"
+
 # grep
 # alias -g gp='| grep -i'
 
@@ -101,6 +103,8 @@ alias grc="git rebase --continue"
 alias gra="git rebase --abort"
 alias glp='git log --pretty=format:"%C(yellow)%h%Creset - %C(green)%an%Creset, %ar : %s"'
 alias glt='git log --graph --oneline --all --decorate'
+alias echo_lts_status="rostopic echo /lts_ng/lts_status"
+alias echo_lts_status2="ros2 topic echo /lts_ng/lts_status"
 
 function rsource_ros2_base {
   local ROS_ROOT
