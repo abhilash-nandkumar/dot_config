@@ -44,6 +44,7 @@ return {
 		},
 	},
 	dim = { enabled = true },
+	layzgit = { enabled = true },
 	picker = { enabled = true },
 	notifier = { enabled = true },
 	toggle = {
@@ -64,7 +65,6 @@ return {
 			disabled = "Enable ",
 		},
 	},
-	gitbrowse = { enabled = true },
 
 	-- keymaps
 	nnoremap("<leader>tg", function()
@@ -73,4 +73,7 @@ return {
 	nnoremap("<leader>tG", function()
 		Snacks.dim.disable()
 	end, "Dim disable"),
+	nnoremap("<leader>gl", function()
+		Snacks.lazygit()
+	end, "Lazy Git"),
 }

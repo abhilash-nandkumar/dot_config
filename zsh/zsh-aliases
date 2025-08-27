@@ -57,6 +57,8 @@ alias l='ls -CF'
 alias cdr1='cd ${WSDIR}/ros1_ws/'
 alias cdr2='cd ${WSDIR}/ros2_ws/'
 
+alias sr='source install/setup.zsh'
+
 alias sr1='source /opt/ros/noetic/setup.zsh'
 alias sr1_ws='sr1 && cdr1 && source install/setup.zsh'
 
@@ -71,6 +73,7 @@ sr1_ws
 rviz -d $(rospack find ipa_navigation_config)/config/nav_config.rviz
 '
 alias ros2rviz='sr2 && rviz2 -d ${WSDIR}/rviz_config.rviz'
+alias ros2rviz_sim='sr2 && ros2 run rviz2 rviz2 --ros-args -p use_sim_time:=true'
 alias ros2_teleop='sr2_ws && ros2 run key_teleop key_teleop key_vel:=/node_cmd_vel_joy'
 alias weather='curl -4 http://wttr.in/Stuttgart'
 alias ncal3='ncal -3 -w'
@@ -80,6 +83,8 @@ alias stop_containers='
 docker stop $(docker ps -aq)
 docker rm $(docker ps -aq)
 '
+
+alias docker_pull="""docker images | fzf | awk '{print $1":"$2}' | xargs -n1 docker pull"""
 
 # git
 alias gc="git commit"

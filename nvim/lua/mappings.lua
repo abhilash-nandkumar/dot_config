@@ -19,8 +19,8 @@ nnoremap("<leader>sv", ":source $MYVIMRC<cr>", "Source configs")
 nnoremap("<leader>th", "<cmd>Themery<cr>", "Theme")
 
 -- general Navigation
-nnoremap("ü", "{", "GoTo prev blank space") -- goto previous blank space in vertical direction
-nnoremap("+", "}", "GoTo next blank space") -- goto next blank space in vertical direction
+-- nnoremap("ü", "{", "GoTo prev blank space") -- goto previous blank space in vertical direction
+-- nnoremap("+", "}", "GoTo next blank space") -- goto next blank space in vertical direction
 
 nnoremap("<leader>f", "<cmd>lua require('conform').format { lsp_fallback = true }<cr>", "Format file")
 

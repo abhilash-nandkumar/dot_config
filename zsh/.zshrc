@@ -30,14 +30,15 @@ zle -N down-line-or-beginning-search
 autoload -Uz colors && colors
 
 local ZDOTDIR=$CONFIGDIR/zsh
-# Useful Functions
-source "$ZDOTDIR/zsh-functions"
+# Function to source files if they exist
+source "$ZDOTDIR/zsh-utils"
 
 # Normal files to source
 zsh_add_file "zsh-exports"
 zsh_add_file "zsh-vim-mode"
 zsh_add_file "zsh-aliases"
 zsh_add_file "zsh-prompt"
+zsh_add_file "zsh-functions"
 
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"

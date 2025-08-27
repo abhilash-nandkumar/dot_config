@@ -16,6 +16,8 @@ return {
 			require("mini.indentscope").setup()
 		end,
 	},
+
+	"echasnovski/mini.surround",
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -109,14 +111,6 @@ return {
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		config = true,
-	},
-	{
-		"kylechui/nvim-surround",
-		version = "*", -- Use for stability; omit to use `main` branch for the latest features
-		event = "VeryLazy",
-		config = function()
-			require("nvim-surround").setup({})
-		end,
 	},
 
 	-- -- lsp stuff

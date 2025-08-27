@@ -26,6 +26,7 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
+-- toggle clangd command based on folder
 M.clangd.setup({
 	cmd = {
 		"docker",
