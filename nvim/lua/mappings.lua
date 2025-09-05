@@ -13,6 +13,16 @@ function nmap(shortcut, command, desc)
 	map("n", shortcut, command, { desc = desc })
 end
 
+function vnoremap(shortcut, command, desc)
+	desc = desc or ""
+	map("v", shortcut, command, { noremap = true, desc = desc })
+end
+
+function vmap(shortcut, command, desc)
+	desc = desc or ""
+	map("v", shortcut, command, { desc = desc })
+end
+
 -- source
 nnoremap("<leader>sv", ":source $MYVIMRC<cr>", "Source configs")
 
@@ -47,9 +57,8 @@ nnoremap("-", "<cmd>Oil<CR>", "Oil parent directory")
 nnoremap("Y", "y$") -- nnoremap Y y$
 nnoremap("<leader>k", ":m .-2<CR>==", "Move line up")
 nnoremap("<leader>j", ":m .+1<CR>==", "Move line down")
-
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+map("v", "<Tab>", ">gv", { noremap = true, desc = "Indent" })
+map("v", "<S-Tab>", "<gv", { noremap = true, desc = "Outdent" })
 
 -- Split Navigation
 nnoremap("<C-j>", "<C-W><C-J>", "Window down [v]")
