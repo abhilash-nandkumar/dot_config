@@ -29,9 +29,9 @@ zle -N down-line-or-beginning-search
 # Colors
 autoload -Uz colors && colors
 
-local ZDOTDIR=$CONFIGDIR/zsh
+local ZDOTDIR="${HOME}/git/dot_config"
 # Function to source files if they exist
-source "$ZDOTDIR/zsh-utils"
+source "${ZDOTDIR}/zsh/zsh-utils"
 
 # Normal files to source
 zsh_add_file "zsh-exports"
@@ -76,9 +76,6 @@ compinit
 autoload edit-command-line; zle -N edit-command-line
 # bindkey '^e' edit-command-line
 
-# Speedy keys
-xset r rate 210 40
-
 # Environment variables set everywhere
 export EDITOR="vim"
 export TERMINAL="kitty"
@@ -91,11 +88,6 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 # setxkbmap -option caps:escape
 # swap escape and caps
 # setxkbmap -option caps:swapescape
-
-# setup thefuck
-eval $(thefuck --alias)
-
-source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
 
 eval "$(starship init zsh)"
 
