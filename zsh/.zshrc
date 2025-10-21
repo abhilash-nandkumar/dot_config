@@ -29,9 +29,9 @@ zle -N down-line-or-beginning-search
 # Colors
 autoload -Uz colors && colors
 
-local ZDOTDIR="${HOME}/git/dot_config"
+local ZDOTDIR="${HOME}/git/dot_config/zsh"
 # Function to source files if they exist
-source "${ZDOTDIR}/zsh/zsh-utils"
+source "${ZDOTDIR}/zsh-utils"
 
 # Normal files to source
 zsh_add_file "zsh-exports"
