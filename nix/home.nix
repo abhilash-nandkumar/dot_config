@@ -31,6 +31,7 @@
     btop
 
     # other
+	libgcc
     fzf
     ripgrep
     cargo
@@ -65,5 +66,6 @@
       settings.user.email = "abhilash.nandkumar@gmail.com";
 	  lfs.skipSmudge = true;
     };
+	gcc.enable = true;
   };
 }
