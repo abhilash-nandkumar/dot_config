@@ -13,6 +13,7 @@
     # GUI apps
     chromium
     gimp
+	wireshark
 
     # dev tools
     neovim
@@ -40,12 +41,14 @@
     starship
 
 	# LSP
-	gdb
 	bash-language-server
 	cmake-language-server
+	gdb
+	hotspot
 	lua-language-server
 	nil
 	pyright
+	valgrind
 	vscode-extensions.rust-lang.rust-analyzer
   ];
 
