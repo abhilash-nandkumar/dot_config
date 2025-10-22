@@ -38,6 +38,15 @@
 
     # Fonts & icons
     starship
+
+	# LSP
+	gdb
+	bash-language-server
+	cmake-language-server
+	lua-language-server
+	nil
+	pyright
+	vscode-extensions.rust-lang.rust-analyzer
   ];
 
   home.file = {
