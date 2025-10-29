@@ -23,8 +23,6 @@
     zsh
 
     # CLI 
-    docker
-    docker-compose
     git-lfs
     openvpn
     pre-commit
