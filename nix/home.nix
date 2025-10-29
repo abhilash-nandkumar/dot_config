@@ -21,6 +21,8 @@
     kitty
     tmux
     zsh
+	lazygit
+	meld
 
     # CLI 
     git-lfs

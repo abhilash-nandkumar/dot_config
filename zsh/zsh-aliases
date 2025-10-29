@@ -106,7 +106,8 @@ alias grc="git rebase --continue"
 alias gra="git rebase --abort"
 alias glp='git log --pretty=format:"%C(yellow)%h%Creset - %C(green)%an%Creset, %ar : %s"'
 alias glt='git log --graph --oneline --all --decorate'
-
+alias hmb='cd ~/git/dot_config/nix && home-manager switch --flake . && cd -'
+ 
 function rsource_ros2_base {
   local ROS_ROOT
   [ -d "/opt/ros/jazzy" ] && . /opt/ros/jazzy/setup.zsh
