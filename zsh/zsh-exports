@@ -2,15 +2,27 @@
 # HISTFILE="$XDG_DATA_HOME"/zsh/history
 HISTSIZE=100000
 SAVEHIST=500
-export PATH="$HOME/.local/bin":$PATH
-export PATH="/usr/lib/ccache":$PATH
-export MANPAGER='vim +Man!'
 export MANWIDTH=999
-# export PATH=$HOME/.cargo/bin:$PATH
+
+# set default apps
+export EDITOR="nvim"
+export TERMINAL="kitty"
+export BROWSER="brave"
+export MANPAGER='nvim +Man!'
+
+# include binary paths
+export PATH="/usr/lib/ccache":$PATH
+export PATH="${HOME}/.local/bin":$PATH
+export PATH="${HOME}/.cargo/bin":$PATH
+
+# set workspace directory for aliases
+export WSDIR="${HOME}/git"
+
 # export PATH=$HOME/.local/share/go/bin:$PATH
 # export GOPATH=$HOME/.local/share/go
 # export PATH=$HOME/.fnm:$PATH
 # export PATH="$PATH:./node_modules/.bin"
+
 # eval "$(fnm env)"
 # eval "$(zoxide init zsh)"
 # eval "`pip completion --zsh`"

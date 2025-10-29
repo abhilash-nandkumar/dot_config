@@ -76,11 +76,6 @@ compinit
 autoload edit-command-line; zle -N edit-command-line
 # bindkey '^e' edit-command-line
 
-# Environment variables set everywhere
-export EDITOR="vim"
-export TERMINAL="kitty"
-export BROWSER="brave"
-
 # For QT Themes
 export QT_QPA_PLATFORMTHEME=qt5ct
 

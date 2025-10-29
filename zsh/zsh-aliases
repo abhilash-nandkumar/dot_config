@@ -62,7 +62,7 @@ alias sr='source install/setup.zsh'
 alias sr1='source /opt/ros/noetic/setup.zsh'
 alias sr1_ws='sr1 && cdr1 && source install/setup.zsh'
 
-alias sr2='source /opt/ros/jazzy/setup.zsh'
+alias sr2='source /opt/ros/humble/setup.zsh'
 alias sr2_ws='sr2 && cdr2 && source install/setup.zsh'
 
 
@@ -170,9 +170,9 @@ alias cds='is_ros_workspace && cd $ROS_WORKSPACE/src'
 alias cdbuild='is_ros_workspace && cd $ROS_WORKSPACE/build'
 alias cddev='is_ros_workspace && cd $ROS_WORKSPACE/devel/.private'
 
-alias colb='${WSDIR}/colb/target/release/colb'
-alias jazzy_container='docker exec -it jazzy_build zsh'
-alias noetic_container='docker exec -it noetic_build zsh'
+alias humble_container='docker exec -it ros2-humble zsh'
+alias jazzy_container='docker exec -it ros2-jazzy zsh'
+alias noetic_container='docker exec -it ros1-noetic zsh'
 
 
 alias trace_lts2='ros2 service call /lts_ng/trace ipa_navigation_msgs/srv/Trace "backend_type: ''
