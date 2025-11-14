@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -13,7 +13,8 @@
     # GUI apps
     chromium
     gimp
-	wireshark
+    wireshark
+    obsidian
 
     # dev tools
     neovim
@@ -21,10 +22,11 @@
     kitty
     tmux
     zsh
-	lazygit
-	meld
+    lazygit
+    meld
+    pre-commit
 
-    # CLI 
+    # CLI
     git-lfs
     openvpn
     pre-commit
@@ -32,7 +34,7 @@
     btop
 
     # other
-	libgcc
+    libgcc
     fzf
     ripgrep
     cargo
@@ -40,30 +42,38 @@
     # Fonts & icons
     starship
 
-	# LSP
-	bash-language-server
-	cmake-language-server
-	gdb
-	hotspot
-	lua-language-server
-	nil
-	pyright
-	valgrind
-	vscode-extensions.rust-lang.rust-analyzer
+    # LSP
+    bash-language-server
+    cmake-language-server
+    gdb
+    hotspot
+    lua-language-server
+    nil
+    pyright
+    valgrind
+    vscode-extensions.rust-lang.rust-analyzer
   ];
+
+  nixpkgs.config = {
+    allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "obsidian"
+      ];
+  };
 
   home.file = {
     ".tmux.conf" = {
-    	source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dot_config/tmux/.tmux.conf";
-     };
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dot_config/tmux/.tmux.conf";
+    };
 
     ".zshrc" = {
-      	source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dot_config/zsh/.zshrc";
-     };
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dot_config/zsh/.zshrc";
+    };
 
     ".config/nvim" = {
-    	source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dot_config/nvim";
-     };
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dot_config/nvim";
+    };
   };
 
   home.sessionVariables = {
@@ -76,8 +86,8 @@
       enable = true;
       settings.user.name = "Abhilash";
       settings.user.email = "abhilash.nandkumar@gmail.com";
-	  lfs.skipSmudge = true;
+      lfs.skipSmudge = true;
     };
-	gcc.enable = true;
+    gcc.enable = true;
   };
 }
