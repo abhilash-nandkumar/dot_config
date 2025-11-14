@@ -27,6 +27,10 @@ export WSDIR="${HOME}/git"
 # eval "$(zoxide init zsh)"
 # eval "`pip completion --zsh`"
 
+export GTEST_COLOR=1
+
+# needed to make ssh-agent discoverable
+# export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}openssh_agent
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

@@ -106,7 +106,7 @@ alias grc="git rebase --continue"
 alias gra="git rebase --abort"
 alias glp='git log --pretty=format:"%C(yellow)%h%Creset - %C(green)%an%Creset, %ar : %s"'
 alias glt='git log --graph --oneline --all --decorate'
-alias hmb='cd ~/git/dot_config/nix && home-manager switch --flake . && cd -'
+alias hmb='cd ${WSDIR}/dot_config/nix && home-manager switch --flake . && cd -'
  
 function rsource_ros2_base {
   local ROS_ROOT
@@ -175,12 +175,7 @@ alias humble_container='docker exec -it ros2-humble zsh'
 alias jazzy_container='docker exec -it ros2-jazzy zsh'
 alias noetic_container='docker exec -it ros1-noetic zsh'
 
-
-alias trace_lts2='ros2 service call /lts_ng/trace ipa_navigation_msgs/srv/Trace "backend_type: ''
-filename: '/tmp/lts'
-level: 3
-"
-'
+alias r2_teleop='ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args --remap cmd_vel:=cmd_vel'
 
 alias node_vpn_connect="sudo openvpn --config /etc/openvpn/config.ovpn"
 alias node_tool_simulate="node-tool --latest simulate --clean --robot-config ros2_robot.yaml --sim-config ros2_sim.yaml --provision"
