@@ -32,7 +32,8 @@ M.clangd.setup({
 		"docker",
 		"exec",
 		"-i",
-		"jazzy_build",
+		-- "ros1-noetic",
+		"ros2-humble",
 		"/bin/sh",
 		"-c",
 		"clangd",
@@ -73,5 +74,5 @@ M.lua_ls.setup({
 })
 
 -- turn off lsp logging
-vim.lsp.set_log_level("off")
+vim.lsp.set_log_level("error")
 return M
