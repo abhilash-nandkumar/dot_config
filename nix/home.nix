@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, opencode, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -25,8 +25,7 @@
     lazygit
     meld
     pre-commit
-	opencode
-
+  
     # CLI
     git-lfs
     openvpn
@@ -53,6 +52,8 @@
     pyright
     valgrind
     vscode-extensions.rust-lang.rust-analyzer
+  ] ++ [
+    opencode.packages.${pkgs.system}.default
   ];
 
   nixpkgs.config = {
