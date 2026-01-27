@@ -130,13 +130,20 @@ return {
 			"rafamadriz/friendly-snippets",
 			"onsails/lspkind.nvim",
 			"kyazdani42/nvim-web-devicons",
-			{ "L3MON4D3/LuaSnip", version = "v2.*" },
+			{ "L3MON4D3/LuaSnip" },
 		},
 
 		-- use a release tag to download pre-built binaries
 		version = "*",
 		opts = function()
-			return require("configs.completion")
+			return require("configs.cmp")
+		end,
+	},
+	{
+		"L3MON4D3/LuaSnip",
+		version = "v2.*",
+		config = function()
+			require("configs.luasnip")
 		end,
 	},
 	"nvim-lua/lsp-status.nvim",
