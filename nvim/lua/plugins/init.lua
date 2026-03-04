@@ -110,7 +110,7 @@ return {
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-		config = true,
+	
 	},
 
 	-- -- lsp stuff
@@ -187,5 +187,14 @@ return {
 		opts = {
 			suppressed_dirs = { "~/", "~/Downloads", "/" },
 		},
+	},
+
+	-- coding agents
+	{
+		"nickjvandyke/opencode.nvim",
+		version = "*", -- Latest stable release
+		dependencies = require("configs.opencode").dependencies,
+		keys = require("configs.opencode").keys,
+		-- config = require("configs.opencode").config,
 	},
 }
