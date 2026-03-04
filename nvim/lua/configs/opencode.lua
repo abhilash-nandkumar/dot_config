@@ -26,11 +26,54 @@ return {
 	},
 	keys = {
 		{
+			"<C-x>",
+			function() require("opencode").select() end,
+			{ desc = "Execute opencode action…" },
+			mode = { "n", "x" },
+		},
+		{
+			"go",
+			function() return require("opencode").operator("@this ") end,
+			{ desc = "Add range to opencode" },
+			mode = { "n", "x" },
+		},
+		{
+			"goo",
+			function() return require("opencode").operator("@this ") .. "_" end,
+			{ desc = "Add line to opencode", expr = true },
+			mode = "n",
+		},
+		{
+			"<S-C-u>",
+			function() require("opencode").command("session.half.page.up") end,
+			{ desc = "Scroll opencode up" },
+			mode = "n",
+		},
+		{
+			"<S-C-d>",
+			function() require("opencode").command("session.half.page.down") end,
+			{ desc = "Scroll opencode down" },
+			mode = "n",
+		},
+		{
+			"<leader>oo",
+			function() require("opencode").toggle() end,
+			{ desc = "Toggle opencode" },
+			mode = { "n", "t" },
+		},
+		{
 			"<leader>oa",
 			function() require("opencode").ask("@this: ", { submit = true }) end,
 			desc = "Ask opencode…",
 			mode = "n",
-		} },
+		},
+		{
+			"<leader>oa",
+			function() require("opencode").ask("@this: ", { submit = true }) end,
+			desc = "Ask opencode…",
+			mode = "v",
+		},
+	},
 	config = function()
 		---@type opencode.Opts
 		vim.o.autoread = true -- Required for `opts.events.reload`
