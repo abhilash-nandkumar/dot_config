@@ -25,32 +25,32 @@ return {
 		},
 	},
 	keys = {
+		-- {
+		-- 	"<C-x>",
+		-- 	function() require("opencode").select() end,
+		-- 	{ desc = "Execute opencode action…" },
+		-- 	mode = { "n", "x" },
+		-- },
 		{
-			"<C-x>",
-			function() require("opencode").select() end,
-			{ desc = "Execute opencode action…" },
-			mode = { "n", "x" },
-		},
-		{
-			"go",
+			"<leader>go",
 			function() return require("opencode").operator("@this ") end,
 			{ desc = "Add range to opencode" },
 			mode = { "n", "x" },
 		},
 		{
-			"goo",
+			"<leader>goo",
 			function() return require("opencode").operator("@this ") .. "_" end,
 			{ desc = "Add line to opencode", expr = true },
 			mode = "n",
 		},
 		{
-			"<S-C-u>",
+			"<Up>",
 			function() require("opencode").command("session.half.page.up") end,
 			{ desc = "Scroll opencode up" },
 			mode = "n",
 		},
 		{
-			"<S-C-d>",
+			"<Down>",
 			function() require("opencode").command("session.half.page.down") end,
 			{ desc = "Scroll opencode down" },
 			mode = "n",

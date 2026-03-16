@@ -25,6 +25,7 @@
     lazygit
     meld
     pre-commit
+	vscode
   
     # CLI
     git-lfs

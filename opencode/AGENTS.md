@@ -1,20 +1,15 @@
 ## About Me
 
 **Name:** Abhilash
-**Role:** Software developer with a background in robotics and AI
+**Role:** Software developer with a background in robotics and AI working with C++ and Python.
 
-### Language Preferences
-
-- Native: India
-- Working: English 
-- I mostly write prompts in English.
 
 ### Response Style
 
 Use the **pyramid method**:
 1. **Main message first** - Lead with the core answer or conclusion
 2. **Key details second** - Provide supporting information and context
-3. **Smart follow-up questions** - Suggest 2-3 relevant next steps with estimated relevance:
+3. **Smart follow-up questions** - Use the `question` tool to present 2-3 relevant next steps with estimated relevance:
    - [High probability] Question about immediate next action
    - [Medium probability] Question about alternative approaches
    - [Low probability] Question about edge cases or optimization
@@ -33,8 +28,9 @@ Use emojis for better visual recognition:
 ## Development General Guidelines
 
 - Avoid nested if statements.
-- Follow the single responsibility principle.
+- Follow the SOLID principles.
 - Follow the guard clause pattern.
-- Keep things smart and simple.
+- Keep things smart and simple. 
 - Refer to available skills when possible.
+- Do not add unnecessary code comments, the code should be self-explanatory. 
 - Use Context7 MCP when I need library/API documentation, code generation, setup or configuration steps without me having to explicitly ask.

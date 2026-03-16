@@ -1,6 +1,6 @@
 ---
 description: git commit and push
-model: opencode/kimi-k2.5
+model: zai-coding-plan/glm-4.7
 subtask: true
 ---
 
