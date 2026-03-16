@@ -1,1 +1,46 @@
 *.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+.Python
+
+# Environment variables and secrets
+.env
+.env.*
+*.env
+*.local
+*.secret
+*.secrets
+*.key
+*.pem
+*.crt
+*.cert
+
+# IDE and editor files
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Node modules
+node_modules/
+package-lock.json
+yarn.lock
+bun.lockb
+
+# Build artifacts
+dist/
+build/
+*.o
+*.a
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp

@@ -25,12 +25,12 @@ return {
 		},
 	},
 	keys = {
-		-- {
-		-- 	"<C-x>",
-		-- 	function() require("opencode").select() end,
-		-- 	{ desc = "Execute opencode action…" },
-		-- 	mode = { "n", "x" },
-		-- },
+		{
+			"<C-x>",
+			function() require("opencode").select() end,
+			{ desc = "Execute opencode action…" },
+			mode = { "n", "x" },
+		},
 		{
 			"<leader>go",
 			function() return require("opencode").operator("@this ") end,
