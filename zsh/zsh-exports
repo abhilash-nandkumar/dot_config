@@ -29,10 +29,6 @@ export WSDIR="${HOME}/git"
 
 export GTEST_COLOR=1
 
-# ROS simulation environments
-export SIM_ENVS_DIR="${HOME}/git/sim_envs"
-export LTS_BACKUP_DIR="${SIM_ENVS_DIR}/lts_backups"
-
 # needed to make ssh-agent discoverable
 # export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}openssh_agent
 

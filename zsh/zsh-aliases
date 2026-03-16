@@ -68,13 +68,7 @@ alias sr2_ws='sr2 && cdr2 && source install/setup.zsh'
 
 # alias backend='conda activate backend'
 alias provision='conda activate node'
-alias ros1rviz='
-sr1_ws
-rviz -d $(rospack find ipa_navigation_config)/config/nav_config.rviz
-'
 alias ros2rviz='sr2 && rviz2 -d ${WSDIR}/rviz_config.rviz'
-alias ros2rviz_sim='sr2 && ros2 run rviz2 rviz2 --ros-args -p use_sim_time:=true'
-alias ros2_teleop='sr2_ws && ros2 run key_teleop key_teleop key_vel:=/node_cmd_vel_joy'
 alias weather='curl -4 http://wttr.in/Stuttgart'
 alias ncal3='ncal -3 -w'
 alias sau='sudo apt update && apt list --upgradable'
@@ -178,4 +172,3 @@ alias noetic_container='docker exec -it ros1-noetic zsh'
 alias r2_teleop='ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args --remap cmd_vel:=cmd_vel'
 
 alias node_vpn_connect="sudo openvpn --config /etc/openvpn/config.ovpn"
-alias node_tool_simulate="node-tool --latest simulate --clean --robot-config ros2_robot.yaml --sim-config ros2_sim.yaml --provision"
