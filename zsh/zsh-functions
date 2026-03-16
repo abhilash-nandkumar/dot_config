@@ -102,8 +102,8 @@ function start_sim2 {
         if [ $# -eq 0 ]; then
 				ros2 launch ipa_navigation_simulation virtual_robot_nav.launch robot:=mir_dwb name:="CaptainCrunch" robot_env:=arena groundtruth_localization:=false
                 return;
-        elif [ $# -eq 2 ]; then
-				ros2 launch ipa_navigation_simulation virtual_robot_nav.launch robot:="$1" name:="CaptainCrunch" robot_env:="$2" pkg_env_config:=/home/abhilash/git/sim_envs groundtruth_localization:=false
+		elif [ $# -eq 2 ]; then
+				ros2 launch ipa_navigation_simulation virtual_robot_nav.launch robot:="$1" name:="CaptainCrunch" robot_env:="$2" pkg_env_config:="${SIM_ENVS_DIR}" groundtruth_localization:=false
 				# ros2 launch ipa_navigation_simulation sim_only.launch robot:="$1" name:="CaptainCrunch" robot_env:="$2" vr_config:=$(ros2 pkg prefix --share sim_configs) pkg_env_config:=$(ros2 pkg prefix --share nr_sim_test_envs) cmd_vel:=/cmd_vel_nav odometry_topic:=/odom cmd_ackermann:=/cmd_ackermann feedback_ackermann:=/feedback_ackermann
                 return;
         else
@@ -117,8 +117,8 @@ function start_sim2_lite {
         if [ $# -eq 0 ]; then
 				ros2 launch ipa_navigation_simulation virtual_robot_nav.launch robot:=mir_dwb name:="CaptainCrunch" robot_env:=arena 
                 return;
-        elif [ $# -eq 2 ]; then
-				ros2 launch ipa_navigation_simulation virtual_robot_nav.launch robot:="$1" name:="CaptainCrunch" robot_env:="$2" pkg_env_config:=/home/abhilash/git/sim_envs
+	elif [ $# -eq 2 ]; then
+				ros2 launch ipa_navigation_simulation virtual_robot_nav.launch robot:="$1" name:="CaptainCrunch" robot_env:="$2" pkg_env_config:="${SIM_ENVS_DIR}"
                 return;
         else
                 echo "Example start_sim2_lite raw3-3 ipa-apartment"
@@ -126,13 +126,13 @@ function start_sim2_lite {
         fi 
 }
 
-function start_lts_with_env {
+	function start_lts_with_env {
 		sr2_ws
-        if [ $# -eq 2 ]; then
-				  ros2 launch node_edge_bringup node_edge_with_env.launch robot:="$1" robot_env:="$2" base_frame:=base_link odom_frame:=odom planning_backend:=no_planning lts_backup_folder:=/home/abhilash/git/sim_envs/lts_backups odom_provider:=external_odometry pkg_nav_config:=/home/abhilash/git/sim_envs use_sim_time:=True pkg_env_config:=/home/abhilash/git/sim_envs
+		if [ $# -eq 2 ]; then
+				  ros2 launch node_edge_bringup node_edge_with_env.launch robot:="$1" robot_env:="$2" base_frame:=base_link odom_frame:=odom planning_backend:=no_planning lts_backup_folder:="${LTS_BACKUP_DIR}" odom_provider:=external_odometry pkg_nav_config:="${SIM_ENVS_DIR}" use_sim_time:=True pkg_env_config:="${SIM_ENVS_DIR}"
           return;
         elif [ $# -eq 3 ]; then
-				  ros2 launch node_edge_bringup node_edge_with_env.launch robot:="$1" robot_env:="$2" odom_provider:="$3" base_frame:=base_link odom_frame:=odom planning_backend:=no_planning lts_backup_folder:=/home/abhilash/git/sim_envs/lts_backups pkg_nav_config:=/home/abhilash/git/sim_envs use_sim_time:=True pkg_env_config:=/home/abhilash/git/sim_envs
+				  ros2 launch node_edge_bringup node_edge_with_env.launch robot:="$1" robot_env:="$2" odom_provider:="$3" base_frame:=base_link odom_frame:=odom planning_backend:=no_planning lts_backup_folder:="${LTS_BACKUP_DIR}" pkg_nav_config:="${SIM_ENVS_DIR}" use_sim_time:=True pkg_env_config:="${SIM_ENVS_DIR}"
           return;
         else
           echo "Example start_lts_with_env raw3-3 ipa-apartment"
