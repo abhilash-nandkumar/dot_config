@@ -25,9 +25,9 @@
     lazygit
     meld
     pre-commit
-	vscode
   
     # CLI
+	gh
     git-lfs
     openvpn
     pre-commit
