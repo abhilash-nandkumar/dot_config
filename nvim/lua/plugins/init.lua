@@ -3,8 +3,8 @@ return {
 
 	-- themes, visual
 	{ "tomasiser/vim-code-dark", name = "vscode-dark" },
-	{ "embark-theme/vim", name = "embark" },
-	{ "morhetz/gruvbox", name = "gruvbox" },
+	{ "embark-theme/vim",        name = "embark" },
+	{ "morhetz/gruvbox",         name = "gruvbox" },
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -110,7 +110,7 @@ return {
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-	
+
 	},
 
 	-- -- lsp stuff
@@ -178,6 +178,14 @@ return {
 			return require("configs.gitsigns")
 		end,
 	},
+	{
+		"sindrets/diffview.nvim",
+		version = "v2.*",
+		config = function()
+			require("configs.diffview")
+		end,
+	},
+
 	-- "airblade/vim-rooter",
 	-- "moll/vim-bbye",
 	-- "nvim-lua/popup.nvim",
