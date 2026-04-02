@@ -26,6 +26,7 @@
     meld
     pre-commit
 	difftastic
+	prettier
   
     # CLI
 	gh
