@@ -1,4 +1,4 @@
-{ config, lib, pkgs, opencode, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -19,12 +19,13 @@
     # dev tools
     neovim
     yazi
-    kitty
+	alacritty
     tmux
     zsh
     lazygit
     meld
     pre-commit
+	difftastic
   
     # CLI
 	gh
@@ -35,7 +36,6 @@
     btop
 
     # other
-    libgcc
     fzf
     ripgrep
     cargo
@@ -53,8 +53,6 @@
     pyright
     valgrind
     vscode-extensions.rust-lang.rust-analyzer
-  ] ++ [
-    opencode.packages.${pkgs.system}.default
   ];
 
   nixpkgs.config = {
