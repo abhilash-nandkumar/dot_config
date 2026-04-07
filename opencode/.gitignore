@@ -18,3 +18,8 @@ package.json
 *.log
 
 .env
+
+# Private keys
+*.key
+*.pem
+*.p12

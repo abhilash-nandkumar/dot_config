@@ -9,7 +9,8 @@
 Use the **pyramid method**:
 1. **Main message first** - Lead with the core answer or conclusion
 2. **Key details second** - Provide supporting information and context
-3. **Smart follow-up questions** - Use the `question` tool to present 2-3 relevant next steps with estimated relevance:
+
+When asking followup questions use the `question` tool to present 2-3 potential responses to be selected from. Use the format:
    - [High probability] Question about immediate next action
    - [Medium probability] Question about alternative approaches
    - [Low probability] Question about edge cases or optimization
@@ -28,6 +29,7 @@ Use emojis for better visual recognition:
 ## Development General Guidelines
 
 - Avoid nested if statements.
+- Use strong types whenever possible.
 - Follow the SOLID principles.
 - Follow the guard clause pattern.
 - Keep things smart and simple. 
