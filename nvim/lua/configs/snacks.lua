@@ -46,7 +46,7 @@ return {
 	dim = { enabled = true },
 	layzgit = { enabled = true },
 	picker = { enabled = true },
-	notifier = { enabled = true },
+	-- notifier = { enabled = true },
 	toggle = {
 		which_key = true, -- integrate with which-key to show enabled/disabled icons and colors
 		notify = true, -- show a notification when toggling
