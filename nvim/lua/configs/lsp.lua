@@ -1,5 +1,3 @@
-local M = require("lspconfig")
-
 -- disable semanticTokens
 local custom_init = function(client, _)
 	if client.supports_method("textDocument/semanticTokens") then
@@ -8,18 +6,16 @@ local custom_init = function(client, _)
 end
 
 local capabilities = require("blink.cmp").get_lsp_capabilities()
+vim.lsp.config("*", {
+	capabilities = capabilities,
+	on_init = custom_init,
+})
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 local servers = { "bashls", "cmake", "gopls", "nil_ls", "pyright", "rust_analyzer" }
-for _, lsp in ipairs(servers) do
-	M[lsp].setup({
-		capabilities = capabilities,
-		on_init = custom_init,
-	})
-end
 
 -- toggle clangd command based on folder
-M.clangd.setup({
+vim.lsp.config("clangd", {
 	cmd = {
 		"docker",
 		"exec",
@@ -34,14 +30,10 @@ M.clangd.setup({
 		"--clang-tidy",
 		"-j=4",
 	},
-	capabilities = capabilities,
-	on_init = custom_init,
 })
 
 
-M.lua_ls.setup({
-	capabilities = capabilities,
-	on_init = custom_init,
+vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
 			runtime = { version = "LuaJIT", path = vim.split(package.path, ";") },
@@ -65,6 +57,7 @@ M.lua_ls.setup({
 	},
 })
 
+vim.lsp.enable(vim.list_extend(servers, { "clangd", "lua_ls" }))
+
 -- turn off lsp logging
-vim.lsp.set_log_level("error")
-return M
+vim.lsp.log.set_level("error")
