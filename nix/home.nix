@@ -41,6 +41,7 @@
     fzf
     ripgrep
     cargo
+	nodejs_24
 
     # Fonts & icons
     starship
