@@ -37,6 +37,7 @@
     btop
 
     # other
+	cmake
     fzf
     ripgrep
     cargo
@@ -45,15 +46,22 @@
     starship
 
     # LSP
+	clang-tools
     bash-language-server
     cmake-language-server
     gdb
-    hotspot
+    # hotspot
     lua-language-server
     nil
     pyright
     valgrind
     vscode-extensions.rust-lang.rust-analyzer
+
+	# libs
+	opencv
+	nlohmann_json
+	ffmpeg
+	gtest.dev
   ];
 
   nixpkgs.config = {
